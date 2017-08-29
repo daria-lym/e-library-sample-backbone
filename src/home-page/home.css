@@ -1,0 +1,37 @@
+body {
+    background-image: url('http://bit.ly/2gPLxZ4');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+img {
+    height: 20px;
+}
+
+#greeting {
+    text-align: center;
+}
+
+.searchInput {
+    height: 60px;
+    font-size: 18px;
+    width: 40%;
+    padding-bottom: 5px;
+}
+
+#searchBtn {
+    height: 60px;
+    width: 100px;
+}
+
+h1 {
+    padding-top: 25px;
+    color: #fff;
+    padding-bottom: 30px;
+}
+
+h3 {
+    color: #fff;
+    padding-bottom: 50px;
+}
