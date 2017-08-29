@@ -24,11 +24,7 @@ const MainRouter = Backbone.Router.extend({
         });
 
         $('body').append(Views.SearchPage.render().el);
-    },
-    events: {
-        'click #searchBtn': 'search'
     }
-
 });
 
 $(() => {
