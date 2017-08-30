@@ -21,7 +21,7 @@ p {
     font-family: sans-serif;
 }
 
-#home {
+.home {
     width: 350px;
     height: 400px;
     background: inherit;
@@ -34,7 +34,7 @@ p {
     border-radius: 8px;
 }
 
-#home:before {
+.home:before {
     width: 400px;
     height: 450px;
     content: "";

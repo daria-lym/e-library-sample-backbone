@@ -1,20 +1,18 @@
 const HomePage = Backbone.View.extend({
     tagName: 'div',
     className: 'home page',
+    events: {
+          'click #searchBtn': 'searchUrl'
+      },
     initialize: function(params) {
         this.params = params;
     },
     render: function() {
-        $.get('src/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+        $.get('src/pages/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
 
         return this;
     },
-    events: {
-        'click #searchBtn': 'searchUrl'
-    },
     searchUrl: function() {
-        Backbone.history.navigate('search', {
-            trigger: true
-        });
+        Backbone.history.navigate('search', true);
     }
 });

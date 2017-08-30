@@ -5,7 +5,7 @@ const NavBar = Backbone.View.extend({
         this.params = params;
     },
     render: function () {
-        $.get('assets/ui/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+        $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
 
         return this;
     }

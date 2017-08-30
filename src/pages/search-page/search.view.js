@@ -5,7 +5,7 @@ const SearchPage = Backbone.View.extend({
         this.params = params;
     },
     render: function () {
-        $.get('src/search-page/search.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+        $.get('src/pages/search-page/search.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
 
         return this;
     }
