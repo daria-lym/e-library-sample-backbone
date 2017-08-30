@@ -4,26 +4,25 @@ const MainRouter = Backbone.Router.extend({
         '*path': 'default'
     },
 
-    initialize: options => {},
+    initialize: options => {
+        Views.NavBar = new NavBar({});
+        $('div.navbar').append(Views.NavBar.render().el);
+    },
 
     default: () => {
-        // TODO: Please, create home page
         if (!Views.HomePage) Views.HomePage = new HomePage({
             name: 'Dmitriy'
         });
-
-        $('body').prepend(Views.HomePage.render().el);
+        $('div.container').html(Views.HomePage.render().el);
 
     },
 
     search: (str, page) => {
-        // TODO: Please, create search page
         if (!Views.SearchPage) Views.SearchPage = new SearchPage({
             str,
             page
         });
-
-        $('body').append(Views.SearchPage.render().el);
+        $('div.container').html(Views.SearchPage.render().el);
     }
 });
 

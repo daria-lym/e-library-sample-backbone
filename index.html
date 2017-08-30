@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>My BB App</title>
-    <!--Bootstrap.css-->    
+    <!--Bootstrap.css-->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-
+    <link rel="stylesheet" href="assets/styles/navbar.css">
 </head>
+
 <body>
-<!--BB-->
-<script src="node_modules/underscore/underscore-min.js"></script>
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="node_modules/backbone/backbone-min.js"></script>
-<!--Views-->
-<script src="src/home-page/home.view.js"></script>
-<script src="src/search-page/search.view.js"></script>
-<!--Bootstrap.js-->
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<!--Entry Point-->
-<script src="src/app.js"></script>
+    <div class="navbar navbar-inverse">
+    </div>
+
+    <div class="container">
+    </div>
+
+    <!--BB-->
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <!--Views-->
+    <script src="assets/ui/navbar.view.js"></script>
+    <script src="src/home-page/home.view.js"></script>
+    <script src="src/search-page/search.view.js"></script>
+    <!--Bootstrap.js-->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--Entry Point-->
+    <script src="src/app.js"></script>
 </body>
+
 </html>
