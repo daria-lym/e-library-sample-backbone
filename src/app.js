@@ -4,10 +4,7 @@ const MainRouter = Backbone.Router.extend({
         '*path': 'default'
     },
 
-    initialize: options => {
-        Views.NavBar = new NavBar({});
-        $('div.navbar').append(Views.NavBar.render().el);
-    },
+    initialize: options => {},
 
     default: () => {
         Views.HomePage = new HomePage({});
