@@ -4,11 +4,14 @@ const MainRouter = Backbone.Router.extend({
         '*path': 'default'
     },
 
-    initialize: options => {},
+    initialize: options => {
+        Views.NavBar = new NavBar({});
+        $('div.navbar').append(Views.NavBar.render().el);
+    },
 
     default: () => {
         Views.HomePage = new HomePage({});
-        $('div.container').empty().append(Views.HomePage.render().el);
+        $('div.container').html(Views.HomePage.render().el);
 
     },
 
@@ -17,7 +20,7 @@ const MainRouter = Backbone.Router.extend({
             str,
             page
         });
-        $('div.container').empty().append(Views.SearchPage.render().el);
+        $('div.container').html(Views.SearchPage.render().el);
     }
 });
 
