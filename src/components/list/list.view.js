@@ -1,14 +1,12 @@
-const NavBar = Backbone.View.extend(
+const List = Backbone.View.extend(
     /** @lends NavBar.prototype */
     {
         /**
          * This will append the tagName and className
          * along with the current one into the DOM
          * @member {String} tagName - the tag of the element
-         * @member {String} className - the class attribute of the element
          */
-        tagName: 'div',
-        className: 'container-fluid',
+        tagName: 'ul',
         /**
          * Creates a new NavBar instance
          * @constructs
@@ -19,12 +17,14 @@ const NavBar = Backbone.View.extend(
             this.params = params;
         },
         /**
-         * This will append the html from file navbar.html
+         * This will append the html from file list.html
          * along with the current one into the DOM
-         * @returns {Object} - html from navbar.html
+         * @returns {Object} - html from list.html
          */
         render: function() {
-            $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/components/list/list.html').done(tpl => {
+                this.$el.html(new ListItem({}).render().el);
+            });
             return this;
         }
     });

@@ -14,16 +14,14 @@ const MainRouter = Backbone.Router.extend(
         /**
          * Method that creates a navbar on a page
          */
-        initialize: options => {
-            const nav = new NavBar({});
-            $('div.navbar').append(nav.render().el);
+        initialize: options => {            
+            $('div.navbar').append(new NavBar({}).render().el);
         },
         /**
          * Method that creates a home page and render it
          */
         default: () => {
-            const home = new HomePage({});
-            $('div.container').html(home.render().el);
+            $('div.container').html(new HomePage({}).render().el);
         },
 
         /**

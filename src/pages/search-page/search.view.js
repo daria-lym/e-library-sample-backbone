@@ -21,10 +21,14 @@ const SearchPage = Backbone.View.extend(
         /**
          * This will append the html from file search.html
          * along with the current one into the DOM
-         * @return {Object} - html from search.html
+         * @returns {Object} - html from search.html && search components
          */
         render: function() {
-            $.get('src/pages/search-page/search.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/pages/search-page/search.html').done(tpl => {
+                this.$el.html(_.template(tpl)(this.params));
+                this.$el.append(new SearchForm({}).render().el);
+                this.$el.append(new List({}).render().el);
+            });
             return this;
         }
     });

@@ -1,4 +1,4 @@
-const NavBar = Backbone.View.extend(
+const SearchForm = Backbone.View.extend(
     /** @lends NavBar.prototype */
     {
         /**
@@ -8,7 +8,7 @@ const NavBar = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'container-fluid',
+        className: 'search-form',
         /**
          * Creates a new NavBar instance
          * @constructs
@@ -19,12 +19,12 @@ const NavBar = Backbone.View.extend(
             this.params = params;
         },
         /**
-         * This will append the html from file navbar.html
+         * This will append the html from file search-form.html
          * along with the current one into the DOM
-         * @returns {Object} - html from navbar.html
+         * @returns {Object} - html from search-form.html
          */
         render: function() {
-            $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/components/forms/search/search-form.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             return this;
         }
     });
