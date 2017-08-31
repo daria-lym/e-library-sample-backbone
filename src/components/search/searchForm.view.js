@@ -1,5 +1,5 @@
-const SearchPage = Backbone.View.extend(
-    /** @lends SearchPage.prototype */
+const SearchForm = Backbone.View.extend(
+    /** @lends NavBar.prototype */
     {
         /**
          * This will append the tagName and className
@@ -8,9 +8,9 @@ const SearchPage = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'search page',
+        className: 'searchForm',
         /**
-         * Creates a new SearchPage instance
+         * Creates a new NavBar instance
          * @constructs
          * @extends Backbone.View
          * @param {{}} params - Backbone.View options
@@ -19,16 +19,12 @@ const SearchPage = Backbone.View.extend(
             this.params = params;
         },
         /**
-         * This will append the html from file search.html
+         * This will append the html from file searchForm.html
          * along with the current one into the DOM
-         * @returns {Object} - html from search.html && search components
+         * @returns {Object} - html from searchForm.html
          */
         render: function() {
-            $.get('src/pages/search-page/search.html').done(tpl => {
-                this.$el.html(_.template(tpl)(this.params));
-                this.$el.append(new SearchForm({}).render().el);
-            });
-
+            $.get('src/components/search/searchForm.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             return this;
         }
     });
