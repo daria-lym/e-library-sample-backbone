@@ -15,16 +15,15 @@ const MainRouter = Backbone.Router.extend(
          * Method that creates a navbar on a page
          */
         initialize: options => {
-            $.get('src/components/navbar/navbar.html', (data) => $('div.navbar').append(data));
-
+            const nav = new NavBar({});
+            $('div.navbar').append(nav.render().el);
         },
         /**
          * Method that creates a home page and render it
          */
         default: () => {
-            Views.HomePage = new HomePage({});
-            $('div.container').html(Views.HomePage.render().el);
-
+            const home = new HomePage({});
+            $('div.container').html(home.render().el);
         },
 
         /**
@@ -33,11 +32,11 @@ const MainRouter = Backbone.Router.extend(
          * @param {Number} page - number of the page
          */
         search: (str, page) => {
-            Views.SearchPage = new SearchPage({
+            const searchPage = new SearchPage({
                 str,
                 page
             });
-            $('div.container').html(Views.SearchPage.render().el);
+            $('div.container').html(searchPage.render().el);
         }
     });
 
@@ -48,7 +47,3 @@ $(() => {
     const app = new MainRouter();
     Backbone.history.start();
 });
-/**
- * @param {Object} Views - Clear all views
- */
-Views = {};
