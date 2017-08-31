@@ -21,13 +21,10 @@ const NavBar = Backbone.View.extend(
         /**
          * This will append the html from file navbar.html
          * along with the current one into the DOM
+         * @return {Object} - html from navbar.html
          */
         render: function() {
-
-            $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
-            /**
-             * @return html from navbar.html
-             */
+            $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));            
             return this;
         }
     });

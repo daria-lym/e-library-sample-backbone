@@ -29,13 +29,10 @@ const HomePage = Backbone.View.extend(
         /**
          * This will append the html from file home.html
          * along with the current one into the DOM
+         * @return {Object} - html from home.html
          */
         render: function() {
-
-            $.get('src/pages/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
-            /**
-             * @return html from home.html
-             */
+            $.get('src/pages/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));            
             return this;
         },
         /**
