@@ -17,13 +17,13 @@ const List = Backbone.View.extend(
             this.params = params;
         },
         /**
-         * This will append the html from file navbar.html
+         * This will append the html from file list.html
          * along with the current one into the DOM
-         * @returns {Object} - html from navbar.html
+         * @returns {Object} - html from list.html
          */
         render: function() {
             $.get('src/components/list/list.html').done(tpl => {
-                this.$el.html(new Item({}).render().el);
+                this.$el.html(new ListItem({}).render().el);
             });
             return this;
         }

@@ -1,4 +1,4 @@
-const Item = Backbone.View.extend(
+const ListItem = Backbone.View.extend(
     /** @lends NavBar.prototype */
     {
         /**
@@ -17,12 +17,12 @@ const Item = Backbone.View.extend(
             this.params = params;
         },
         /**
-         * This will append the html from file navbar.html
+         * This will append the html from file list-item.html
          * along with the current one into the DOM
-         * @returns {Object} - html from navbar.html
+         * @returns {Object} - html from list-item.html
          */
         render: function() {
-            $.get('src/components/list/item.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/components/list/list-item.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             return this;
         }
-    });    
+    });
