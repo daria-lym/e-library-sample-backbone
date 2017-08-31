@@ -23,10 +23,8 @@ const List = Backbone.View.extend(
          */
         render: function() {
             $.get('src/components/list/list.html').done(tpl => {
-                this.$el.html(_.template(tpl)(this.params));
-                $.getScript('src/components/list/item.view.js', (data) => this.$el.append(eval(data)));
+                this.$el.html(new Item({}).render().el);
             });
             return this;
         }
     });
-new List({}).render().el

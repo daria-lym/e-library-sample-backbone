@@ -25,5 +25,4 @@ const Item = Backbone.View.extend(
             $.get('src/components/list/item.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             return this;
         }
-    });
-    new Item({}).render().el
+    });    
