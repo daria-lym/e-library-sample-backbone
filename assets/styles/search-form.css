@@ -1,15 +1,15 @@
-.searchInput {
+.search-input {
     height: 50px;
     font-size: 18px;
     width: 40%;
     padding-bottom: 7px;
 }
 
-.searchForm {
+.search-form {
     text-align: center;
 }
 
-.searchConfirm {
+.search-confirm {
     height: 50px;
     width: 80px;
 }

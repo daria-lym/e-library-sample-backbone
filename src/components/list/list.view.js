@@ -1,14 +1,12 @@
-const SearchForm = Backbone.View.extend(
+const List = Backbone.View.extend(
     /** @lends NavBar.prototype */
     {
         /**
          * This will append the tagName and className
          * along with the current one into the DOM
          * @member {String} tagName - the tag of the element
-         * @member {String} className - the class attribute of the element
          */
-        tagName: 'div',
-        className: 'searchForm',
+        tagName: 'ul',
         /**
          * Creates a new NavBar instance
          * @constructs
@@ -19,12 +17,16 @@ const SearchForm = Backbone.View.extend(
             this.params = params;
         },
         /**
-         * This will append the html from file searchForm.html
+         * This will append the html from file navbar.html
          * along with the current one into the DOM
-         * @returns {Object} - html from searchForm.html
+         * @returns {Object} - html from navbar.html
          */
         render: function() {
-            $.get('src/components/search/searchForm.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/components/list/list.html').done(tpl => {
+                this.$el.html(_.template(tpl)(this.params));
+                $.getScript('src/components/list/item.view.js', (data) => this.$el.append(eval(data)));
+            });
             return this;
         }
     });
+new List({}).render().el
