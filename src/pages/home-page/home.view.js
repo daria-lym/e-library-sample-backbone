@@ -31,13 +31,10 @@ const HomePage = Backbone.View.extend(
          * along with the current one into the DOM
          */
         render: function() {
-            /**
-             * Method that get html from file home.html
-             * @param {String} - path to file home.html
-             */
+
             $.get('src/pages/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             /**
-             * @exports module HomePage
+             * @return html from home.html
              */
             return this;
         },

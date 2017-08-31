@@ -23,13 +23,9 @@ const SearchPage = Backbone.View.extend(
          * along with the current one into the DOM
          */
         render: function() {
-          /**
-           * Method that get html from file search.html
-           * @param {String} - path to file search.html
-           */
             $.get('src/pages/search-page/search.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             /**
-             * @exports module SearchPage
+             * @return html from search.html
              */
             return this;
         }

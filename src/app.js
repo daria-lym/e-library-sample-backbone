@@ -1,4 +1,4 @@
-/**Creatin an application Router*/
+/**Creating an application Router*/
 
 const MainRouter = Backbone.Router.extend(
     /**@lends MainRouter.prototype*/
@@ -12,14 +12,11 @@ const MainRouter = Backbone.Router.extend(
             '*path': 'default'
         },
         /**
-         * Creates a new MainRouter instance
-         * @constructs
-         * @extends Backbone.Router
-         * @param {Object} options - Backbone.Router options object
+         * Method that creates a navbar on a page
          */
         initialize: options => {
-            Views.NavBar = new NavBar({});
-            $('div.navbar').append(Views.NavBar.render().el);
+            $.get('src/components/navbar/navbar.html', (data) => $('div.navbar').append(data));
+
         },
         /**
          * Method that creates a home page and render it
