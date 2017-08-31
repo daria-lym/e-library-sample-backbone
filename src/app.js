@@ -1,3 +1,9 @@
+/**
+ * @member {Object} library - declaration the new instance of collection
+ */
+const library = new Library({});
+library.pop();
+
 /**Creating an application Router*/
 
 const MainRouter = Backbone.Router.extend(
@@ -14,7 +20,7 @@ const MainRouter = Backbone.Router.extend(
         /**
          * Method that creates a navbar on a page
          */
-        initialize: options => {            
+        initialize: options => {
             $('div.navbar').append(new NavBar({}).render().el);
         },
         /**

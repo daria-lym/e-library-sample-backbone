@@ -5,13 +5,15 @@ const ListItem = Backbone.View.extend(
          * This will append the tagName and className
          * along with the current one into the DOM
          * @member {String} tagName - the tag of the element
+         * @member {String} className - the class attribute of the element
          */
-        tagName: 'li',
+        tagName: 'div',
+        className: 'panel panel-success',
         /**
          * Creates a new NavBar instance
          * @constructs
          * @extends Backbone.View
-         * @param {{}} params - Backbone.View options
+         * @member {Object} params - items from response in JSON
          */
         initialize: function(params) {
             this.params = params;
@@ -22,7 +24,9 @@ const ListItem = Backbone.View.extend(
          * @returns {Object} - html from list-item.html
          */
         render: function() {
-            $.get('src/components/list/list-item.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/components/list/list-item.html').done(tpl => {
+                this.$el.append(_.template(tpl)(this.params.items));
+            });
             return this;
         }
     });
