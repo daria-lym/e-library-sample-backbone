@@ -25,15 +25,9 @@ const List = Backbone.View.extend(
          * @returns {Object} - html from list.html && list-item.view.js
          */
         render: function() {
-            $.get('src/components/list/list.html').done(tpl => {
-                this.$el.html(_.template(tpl)(this.params));
-                library.slice(-10).forEach((book) => {
-                    let items = book.toJSON();
-                    this.$el.append(new ListItem({
-                        items
-                    }).render().el);
-                }, this);
-            });
+            this.params.forEach((book) => {
+                this.$el.append(new ListItem(book).render().el);
+            }, this);
             return this;
         }
     });

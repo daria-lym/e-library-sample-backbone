@@ -13,6 +13,19 @@ const Book = Backbone.Model.extend(
             date: 'It was a long time ago in a galaxy far far away...',
             description: 'If you read this we will have to kill you. Enjoy!',
             img: 'i/Cover.gif',
-            dataId: '0'
+            id: '0'
+        },
+        parse: (book) => {
+            return {
+                title: book.volumeInfo.title,
+                author: (book.volumeInfo.authors) ? book.volumeInfo.authors.join(', ') : false,
+                category: (book.volumeInfo.categories) ? book.volumeInfo.categories.join(', ') : false,
+                publisher: book.volumeInfo.publisher,
+                date: book.volumeInfo.publishedDate,
+                description: book.volumeInfo.description,
+                img: book.volumeInfo.imageLinks.thumbnail,
+                id: book.id
+            };
         }
+
     });

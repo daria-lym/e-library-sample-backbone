@@ -23,9 +23,9 @@ const ListItem = Backbone.View.extend(
          * along with the current one into the DOM
          * @returns {Object} - html from list-item.html
          */
-        render: function() {
+        render: function() {          
             $.get('src/components/list/list-item.html').done(tpl => {
-                this.$el.append(_.template(tpl)(this.params.items));
+                this.$el.append(_.template(tpl)(this.params));
             });
             return this;
         }

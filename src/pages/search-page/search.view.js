@@ -1,4 +1,3 @@
-const url = `https://www.googleapis.com/books/v1/volumes?q=javascript&startIndex=0&maxResults=10`
 const SearchPage = Backbone.View.extend(
     /** @lends SearchPage.prototype */
     {
@@ -43,21 +42,10 @@ const SearchPage = Backbone.View.extend(
          * @member {Object} library - total collection of books
          */
         showBooks: function() {
-            $.get(url).done(response => {
-                for (let i = 0; i < response.items.length; i++) {
-                    let book = new Book({
-                        title: response.items[i].volumeInfo.title,
-                        author: response.items[i].volumeInfo.authors,
-                        category: response.items[i].volumeInfo.authors,
-                        publisher: response.items[i].volumeInfo.publisher,
-                        date: response.items[i].volumeInfo.publishedDate,
-                        description: response.items[i].volumeInfo.description,
-                        img: response.items[i].volumeInfo.imageLinks.thumbnail,
-                        dataId: response.items[i].id
-                    });
-                    library.add(book);
-                }
-                this.$el.append(new List({}).render().el);
+            books.fetch();
+            books.on('sync', () => {
+                let library = books.toJSON();
+                this.$el.append(new List(library).render().el)
             });
         }
     });
