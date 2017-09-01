@@ -13,7 +13,7 @@ const List = Backbone.View.extend(
          * Creates a new NavBar instance
          * @constructs
          * @extends Backbone.View
-         * @param {{}} params - Backbone.View options
+         * @member {Object} params - collection of books
          */
         initialize: function(params) {
             this.params = params;
@@ -21,7 +21,7 @@ const List = Backbone.View.extend(
         /**
          * This will append the html from file list.html && list-item.view.js
          * along with the current one into the DOM
-         * @member {Object} library - total collection of books
+         * @member {Object} book - one of the each item in collection
          * @returns {Object} - html from list.html && list-item.view.js
          */
         render: function() {

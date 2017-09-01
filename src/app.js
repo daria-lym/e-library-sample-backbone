@@ -1,7 +1,9 @@
 /**
  * @member {Object} library - declaration the new instance of collection
  */
-const books = new Books();
+Collections = {
+    books: new Books()
+};
 
 /**Creating an application Router*/
 

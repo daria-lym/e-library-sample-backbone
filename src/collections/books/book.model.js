@@ -2,8 +2,7 @@ const Book = Backbone.Model.extend(
     /** @lends Book.prototype */
     {
         /**
-         * @param {Object} defaults - indicates the primary key of the model
-         * @param {String} - default attributes for this model
+         * @param {Object} defaults - indicates the primary key of the model         
          */
         defaults: {
             title: 'Top secret (apparently).',
@@ -15,6 +14,11 @@ const Book = Backbone.Model.extend(
             img: 'i/Cover.gif',
             id: '0'
         },
+        /**
+         * @member {Object} book - one object requested from the server
+         * @method parse - processes the request and picks up the necessary data from book
+         * @returns {Object} - one instance of the model
+         */
         parse: (book) => {
             return {
                 title: book.volumeInfo.title,

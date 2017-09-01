@@ -31,21 +31,21 @@ const SearchPage = Backbone.View.extend(
          * @returns {Object} - html from search.html && search components
          */
         render: function() {
-            this.$el.append(new SearchForm({}).render().el);
+            this.$el.append(new SearchForm().render().el);
             return this;
         },
         /**
          * Method that start of filling a collection
          * @fires SearchPage#showBooks
-         * @member {Object} book - book model instance
+         * @member {Object} books - instance of the collection
+         * @member {Object} lib - collection in JSON format
          * which are filling from response
-         * @member {Object} library - total collection of books
          */
         showBooks: function() {
-            books.fetch();
-            books.on('sync', () => {
-                let library = books.toJSON();
-                this.$el.append(new List(library).render().el)
+            Collections.books.fetch();
+            Collections.books.on('sync', () => {
+                let lib = Collections.books.toJSON();
+                this.$el.append(new List(lib).render().el)
             });
         }
     });

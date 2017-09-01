@@ -13,7 +13,7 @@ const ListItem = Backbone.View.extend(
          * Creates a new NavBar instance
          * @constructs
          * @extends Backbone.View
-         * @member {Object} params - items from response in JSON
+         * @member {Object} params - one book from response in JSON
          */
         initialize: function(params) {
             this.params = params;
@@ -23,7 +23,7 @@ const ListItem = Backbone.View.extend(
          * along with the current one into the DOM
          * @returns {Object} - html from list-item.html
          */
-        render: function() {          
+        render: function() {
             $.get('src/components/list/list-item.html').done(tpl => {
                 this.$el.append(_.template(tpl)(this.params));
             });
