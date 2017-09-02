@@ -1,11 +1,25 @@
 /**
+ * @member {Object} books - declaration the new instance of collection Books
+ * which contains the last 10 books from the query
  * @member {Object} library - declaration the new instance of collection
+ * which contains all books from the query
  */
 Collections = {
     books: new Books(),
     library: new Library()
 };
+/**
+ * @member {Number} STEP - number of books in 1 query
+ */
 const STEP = 10;
+/**
+ * @method fullUrl - query path method
+ * @param {String} query - query name
+ * @param {Number} start - the number of the
+ * book with which to start the search
+ * @param {Number} STEP - number of books in the query
+ * @returns {String} url - full query path
+ */
 const fullUrl = (query, start, STEP) => {
     let url = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${start}&maxResults=${STEP}`;
     return (url);

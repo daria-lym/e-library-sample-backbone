@@ -23,7 +23,7 @@ const SearchPage = Backbone.View.extend(
          * @param {{}} params - Backbone.View options
          */
         initialize: function(params) {
-            this.params = params;            
+            this.params = params;
         },
         /**
          * This will append the html from file search.html
