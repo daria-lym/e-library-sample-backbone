@@ -4,6 +4,12 @@
 Collections = {
     books: new Books()
 };
+const STEP = 10;
+const fullUrl = (query, start, STEP) => {
+    let url = `https://www.googleapis.com/books/v1/volumes?q=${query}
+&startIndex=${start}&maxResults=${STEP}`;
+    return (url);
+};
 
 /**Creating an application Router*/
 

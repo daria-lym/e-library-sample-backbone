@@ -15,7 +15,7 @@ const List = Backbone.View.extend(
          * @extends Backbone.View
          * @member {Object} params - collection of books
          */
-        initialize: function(params) {
+        initialize: function(params) {            
             this.params = params;
         },
         /**

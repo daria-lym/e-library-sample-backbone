@@ -42,11 +42,14 @@ const SearchPage = Backbone.View.extend(
          * which are filling from response
          */
         showBooks: function() {
-            Collections.books.on('sync', () => {
+            if ($('.panel-group')) $('.panel-group, .pagination').remove();
+            let query = $('.search-input').val();
+            Collections.books.url = fullUrl(query, 0, STEP);
+            Collections.books.once('sync', () => {
                 let lib = Collections.books.toJSON();
                 this.$el.append(new List(lib).render().el);
                 this.$el.append(new PaginationForm().render().el);
-            });
-            Collections.books.fetch();
+            });            
+            if (query) Collections.books.fetch();
         }
     });
