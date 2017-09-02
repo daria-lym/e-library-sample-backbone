@@ -14,7 +14,8 @@ const SearchPage = Backbone.View.extend(
          * @event SearchPage#showBooks
          */
         events: {
-            'click .search-confirm': 'showBooks'
+            'click .search-confirm': 'showBooks',
+            'click .openModal': 'showModal'
         },
         /**
          * Creates a new SearchPage instance
@@ -56,5 +57,12 @@ const SearchPage = Backbone.View.extend(
             Collections.books.query = query;
             Collections.books.url = fullUrl(query, 0, STEP);
             if (query) Collections.books.fetch();
+        },
+        showModal: function(e) {            
+            let target = Collections.library.toJSON().find((item) => {
+                return item.id === e.target.getAttribute('data-id');
+            });
+            $('#modal').html(new Modal(target).render().el);
+            $('#modal').modal();
         }
     });

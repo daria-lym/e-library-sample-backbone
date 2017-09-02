@@ -1,5 +1,5 @@
-const ListItem = Backbone.View.extend(
-    /** @lends NavBar.prototype */
+const Modal = Backbone.View.extend(
+    /** @lends Modal.prototype */
     {
         /**
          * This will append the tagName and className
@@ -8,25 +8,26 @@ const ListItem = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'panel panel-success',
+        className: 'modal-dialog',
         /**
          * Creates a new NavBar instance
          * @constructs
          * @extends Backbone.View
-         * @member {Object} params - one book from response in JSON
+         * @param {{}} params - Backbone.View options
          */
         initialize: function(params) {
             this.params = params;
         },
         /**
-         * This will append the html from file list-item.html
+         * This will append the html from file modal.html
          * along with the current one into the DOM
-         * @returns {Object} - html from list-item.html
+         * @returns {Object} - html from modal.html
          */
-        render: function() {        
-            $.get('src/components/list/list-item.html').done(tpl => {
-                this.$el.append(_.template(tpl)(this.params));
-            });
-            return this;
+        render: function() {
+          console.log(this.params);
+          $.get('src/components/modal/modal.html').done(tpl => {
+              this.$el.append(_.template(tpl)(this.params));
+          });
+          return this;
         }
     });
