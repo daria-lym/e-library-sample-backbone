@@ -42,10 +42,10 @@ const SearchPage = Backbone.View.extend(
          * which are filling from response
          */
         showBooks: function() {
-            Collections.books.fetch();
             Collections.books.on('sync', () => {
                 let lib = Collections.books.toJSON();
                 this.$el.append(new List(lib).render().el)
             });
+            Collections.books.fetch();
         }
     });
