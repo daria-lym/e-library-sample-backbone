@@ -2,15 +2,14 @@
  * @member {Object} library - declaration the new instance of collection
  */
 Collections = {
-    books: new Books()
+    books: new Books(),
+    library: new Library()
 };
 const STEP = 10;
 const fullUrl = (query, start, STEP) => {
-    let url = `https://www.googleapis.com/books/v1/volumes?q=${query}
-&startIndex=${start}&maxResults=${STEP}`;
+    let url = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${start}&maxResults=${STEP}`;
     return (url);
 };
-
 /**Creating an application Router*/
 
 const MainRouter = Backbone.Router.extend(

@@ -23,7 +23,7 @@ const SearchPage = Backbone.View.extend(
          * @param {{}} params - Backbone.View options
          */
         initialize: function(params) {
-            this.params = params;
+            this.params = params;            
         },
         /**
          * This will append the html from file search.html
@@ -42,14 +42,19 @@ const SearchPage = Backbone.View.extend(
          * which are filling from response
          */
         showBooks: function() {
-            if ($('.panel-group')) $('.panel-group, .pagination').remove();
-            let query = $('.search-input').val();
-            Collections.books.url = fullUrl(query, 0, STEP);
             Collections.books.once('sync', () => {
                 let lib = Collections.books.toJSON();
                 this.$el.append(new List(lib).render().el);
                 this.$el.append(new PaginationForm().render().el);
-            });            
+                Collections.library.add(Collections.books.models);
+            });
+            if ($('.panel-group')) {
+                Collections.library.reset();
+                $('.panel-group, .pagination').remove();
+            }
+            let query = $('.search-input').val();
+            Collections.books.query = query;
+            Collections.books.url = fullUrl(query, 0, STEP);
             if (query) Collections.books.fetch();
         }
     });
