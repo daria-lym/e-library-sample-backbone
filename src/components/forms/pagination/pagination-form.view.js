@@ -1,5 +1,5 @@
-const SearchForm = Backbone.View.extend(
-    /** @lends NavBar.prototype */
+const PaginationForm = Backbone.View.extend(
+    /** @lends PaginationForm.prototype */
     {
         /**
          * This will append the tagName and className
@@ -8,20 +8,20 @@ const SearchForm = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'search-form',
+        className: 'pagination',
         /**
          * Creates a new NavBar instance
-         * @constructs 
-         * @extends Backbone.View        
+         * @constructs
+         * @extends Backbone.View
          */
         initialize: function() {},
         /**
-         * This will append the html from file search-form.html
+         * This will append the html from file pagination-form.html
          * along with the current one into the DOM
-         * @returns {Object} - html from search-form.html
+         * @returns {Object} - html from pagination-form.html
          */
-        render: function() {          
-            $.get('src/components/forms/search/search-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
+        render: function() {            
+            $.get('src/components/forms/pagination/pagination-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
             return this;
         }
     });

@@ -30,3 +30,8 @@
 .panel-group {
     padding: 20px;
 }
+
+.pagination {
+    width: 100%;
+    text-align: center;
+}

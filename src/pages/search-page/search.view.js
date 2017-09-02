@@ -44,7 +44,8 @@ const SearchPage = Backbone.View.extend(
         showBooks: function() {
             Collections.books.on('sync', () => {
                 let lib = Collections.books.toJSON();
-                this.$el.append(new List(lib).render().el)
+                this.$el.append(new List(lib).render().el);
+                this.$el.append(new PaginationForm().render().el);
             });
             Collections.books.fetch();
         }
