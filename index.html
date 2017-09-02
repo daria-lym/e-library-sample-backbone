@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>My BB App</title>
-    <link rel="stylesheet" href="assets/styles/navbar.css">
     <!--Bootstrap.css-->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!--Main styles-->
+    <link rel="stylesheet" href="assets/styles/home.css">
+    <link rel="stylesheet" href="assets/styles/search.css">
+    <link rel="stylesheet" href="assets/styles/navbar.css">
 </head>
 
 <body>
@@ -20,6 +23,10 @@
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
+    <!--Models-->
+    <script src="src/collections/books/book.model.js"></script>
+    <!--Collections-->
+    <script src="src/collections/books/books.collection.js"></script>
     <!--Views-->
     <script src="src/components/navbar/navbar.view.js"></script>
     <script src="src/components/list/list-item.view.js"></script>

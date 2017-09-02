@@ -8,7 +8,14 @@ const SearchPage = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'search page',
+        className: 'search-page',
+        /**
+         * showBooks event.
+         * @event SearchPage#showBooks
+         */
+        events: {
+            'click .search-confirm': 'showBooks'
+        },
         /**
          * Creates a new SearchPage instance
          * @constructs
@@ -24,11 +31,21 @@ const SearchPage = Backbone.View.extend(
          * @returns {Object} - html from search.html && search components
          */
         render: function() {
-            $.get('src/pages/search-page/search.html').done(tpl => {
-                this.$el.html(_.template(tpl)(this.params));
-                this.$el.append(new SearchForm({}).render().el);
-                this.$el.append(new List({}).render().el);
-            });
+            this.$el.append(new SearchForm().render().el);
             return this;
+        },
+        /**
+         * Method that start of filling a collection
+         * @fires SearchPage#showBooks
+         * @member {Object} books - instance of the collection
+         * @member {Object} lib - collection in JSON format
+         * which are filling from response
+         */
+        showBooks: function() {
+            Collections.books.on('sync', () => {
+                let lib = Collections.books.toJSON();
+                this.$el.append(new List(lib).render().el)
+            });
+            Collections.books.fetch();
         }
     });

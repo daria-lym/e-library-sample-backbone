@@ -11,13 +11,10 @@ const SearchForm = Backbone.View.extend(
         className: 'search-form',
         /**
          * Creates a new NavBar instance
-         * @constructs
-         * @extends Backbone.View
-         * @param {{}} params - Backbone.View options
+         * @constructs 
+         * @extends Backbone.View        
          */
-        initialize: function(params) {
-            this.params = params;
-        },
+        initialize: function() {},
         /**
          * This will append the html from file search-form.html
          * along with the current one into the DOM
