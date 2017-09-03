@@ -55,12 +55,12 @@ const MainRouter = Backbone.Router.extend(
          * @param {String} str - query value
          * @param {Number} page - number of the page
          */
-        search: (str, page) => {            
-            if (page > 1 && Collections.library.length == 0) {
+        search: (str, page) => {
+            /*if (page > 1 && Collections.library.length == 0) {
                 Backbone.history.navigate(`search`);
                 str = null;
                 page = null;
-            };
+            };*/
             const searchPage = new SearchPage({
                 str,
                 page

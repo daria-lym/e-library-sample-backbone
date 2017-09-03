@@ -10,18 +10,18 @@ const SearchPage = Backbone.View.extend(
         tagName: 'div',
         className: 'search-page',
         /**
-         * showBooks event.
-         * @event SearchPage#showBooks
+         * newSearch event.
+         * @event SearchPage#newSearch
          */
         events: {
-            'click .search-confirm': 'newQuery',
+            'click .search-confirm': 'newSearch',
             'click .openModal': 'showModal'
         },
         /**
          * Creates a new SearchPage instance
          * @constructs
          * @extends Backbone.View
-         * @param {{}} params - Backbone.View options
+         * @param {Object.<string, number>} params - landmark for search and page number
          */
         initialize: function(params) {
             this.params = params;
@@ -36,34 +36,47 @@ const SearchPage = Backbone.View.extend(
             if (this.params.str) this.showBooks(this.params.str, this.params.page);
             return this;
         },
-
-        newQuery: function() {
+        /**
+         * Method triggered by a new search
+         * @fires SearchPage#newSearch
+         * @member {String} query - get value of input paceholder
+         *
+         */
+        newSearch: function() {
             let query = $('.search-input').val();
             Backbone.history.navigate(`search/${query}/${1}`);
-            Collections.library.reset();
             $('.panel-group, .pagination').remove();
             this.showBooks(query, 1);
         },
         /**
          * Method that start of filling a collection
-         * @fires SearchPage#showBooks
-         * @member {Object} books - instance of the collection
-         * @member {Object} lib - collection in JSON format
-         * which are filling from response
+         * @member {String} query - get value of input paceholder or from url
+         * @member {Number} page - get number of the page from url or 1 when new search works
+         * @method fullUrl - forms the path of the request
          */
         showBooks: function(query, page) {
             Collections.books.once('sync', () => {
+                Collections.library.on('update', function(e) {
+                    Collections.library.models.slice(-STEP).forEach((model) => model.set('url', Collections.books.url));
+                });
                 let lib = Collections.books.toJSON();
                 this.$el.append(new List(lib).render().el);
-                this.$el.append(new PaginationForm({query, page}).render().el);
+                this.$el.append(new PaginationForm({
+                    query,
+                    page
+                }).render().el);
                 Collections.library.add(Collections.books.models);
             });
             Collections.books.url = fullUrl(query, (page - 1) * STEP, STEP);
             Collections.books.fetch();
         },
-
-
-        showModal: function(e) {
+        /**
+         * Method that show modal window
+         * @param {Object} e - get value of current event
+         * @member {Object} target - determines which
+         * collection object matches the event
+         */
+        showModal: function(e) {            
             let target = Collections.library.toJSON().find((item) => {
                 return item.id === e.target.getAttribute('data-id');
             });

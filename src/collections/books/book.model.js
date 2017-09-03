@@ -12,7 +12,8 @@ const Book = Backbone.Model.extend(
             date: 'It was a long time ago in a galaxy far far away...',
             description: 'If you read this we will have to kill you. Enjoy!',
             img: 'assets/img/Cover.gif',
-            id: '0'
+            id: '0',
+            url: ''
         },
         /**
          * @member {Object} book - one object requested from the server
@@ -20,6 +21,7 @@ const Book = Backbone.Model.extend(
          * @returns {Object} - one instance of the model
          */
         parse: (book) => {
+            
             return {
                 title: book.volumeInfo.title,
                 author: (book.volumeInfo.authors) ? book.volumeInfo.authors.join(', ') : false,

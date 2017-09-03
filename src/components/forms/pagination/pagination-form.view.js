@@ -29,14 +29,14 @@ const PaginationForm = Backbone.View.extend(
          */
         initialize: function(params) {
             this.params = params;
-            this.params.page = Number(this.params.page);
+            this.params.page = Number(this.params.page);            
         },
         /**
          * This will append the html from file pagination-form.html
          * along with the current one into the DOM
          * @returns {Object} - html from pagination-form.html
          */
-        render: function() {            
+        render: function() {
             $.get('src/components/forms/pagination/pagination-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
             return this;
         },
@@ -46,12 +46,11 @@ const PaginationForm = Backbone.View.extend(
          * @fires SearchPage#showPrev
          */
         showPrev: function(e) {
-            if (e.target.classList.contains('disabled')) return;
+            if (this.params.page === 1) return;
             this.params.page--;
             Backbone.history.navigate(`search/${this.params.query}/${this.params.page}`);
-            this.disabledBtn();
             this.removePanels();
-            this.checkData((this.params.page * STEP) - STEP, this.params.page * STEP);
+            this.checkData((this.params.page * STEP) - STEP);
         },
         /**
          * Method that adds 10 following books
@@ -59,7 +58,7 @@ const PaginationForm = Backbone.View.extend(
          */
         showMore: function() {
             Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
-            this.checkData(this.params.page * STEP, (this.params.page * STEP) + STEP);
+            this.checkData(this.params.page * STEP);
             this.params.page++;
 
         },
@@ -68,39 +67,33 @@ const PaginationForm = Backbone.View.extend(
          * @fires SearchPage#showNext
          */
         showNext: function() {
-            this.enableBtn();
             this.removePanels();
             Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
-            this.checkData(this.params.page * STEP, (this.params.page * STEP) + STEP);
+            this.checkData(this.params.page * STEP);
             this.params.page++;
         },
         /**
          * Method that fills a library collection
          * with books that are not yet there
-         * @member {String} query - contains the name
-         * of the current search query
-         * @member {String} lib - contains the last
-         * 10 books of the current request
+         * @member {Number} start - start index of the book to search query
          *
          */
-        syncData: function() {
+        syncData: function(start) {
             Collections.books.once('sync', () => {
                 let lib = Collections.books.toJSON();
                 $('.pagination').before(new List(lib).render().el);
                 Collections.library.add(Collections.books.models);
             });
-            Collections.books.url = fullUrl(this.params.query, this.params.page * STEP, STEP);
+            Collections.books.url = fullUrl(this.params.query, start, STEP);
             Collections.books.fetch();
         },
         /**
          * Method that loads data from a library collection
          * @param {Number} start - the number of the object
          * from which to start the selection
-         * @param {Number} stop - the number of the object
-         * on which to complete the selection
          */
-        libData: function(start, stop) {
-            let lib = Collections.library.toJSON().slice(start, stop);
+        libData: function(start) {
+            let lib = Collections.library.toJSON().slice(start, start + STEP);
             $('.pagination').before(new List(lib).render().el);
         },
         /**
@@ -108,23 +101,20 @@ const PaginationForm = Backbone.View.extend(
          * of data in the library collection
          * @param {Number} start - the number of the object
          * from which to start the selection
-         * @param {Number} stop - the number of the object
-         * on which to complete the selection
+         * @member {String} url - path to be checked for collection
+         * @member {Object} lib - collection of all books in JSON format
+         * @member {Object} target - the existence of this object indicates
+         * a presence of the query in the collection
+         * @member {Number} i - index of target in lib
          */
-        checkData: function(start, stop) {
-            (this.params.page * STEP == Collections.library.length) ? this.syncData(): this.libData(start, stop);
-        },
-        /**
-         * The method that makes the previous button enable
-         */
-        enableBtn: function() {
-            if ($('.disabled')) $('[data-id = "prev"]').attr('class', 'btn btn-default');
-        },
-        /**
-         * The method that makes the previous button disable
-         */
-        disabledBtn: function() {
-            if (this.params.page == 1) $('[data-id = "prev"]').attr('class', 'btn btn-default disabled');
+        checkData: function(start) {
+            let url = fullUrl(this.params.query, start, STEP);
+            let lib = Collections.library.toJSON();
+            let target = lib.find((item) => {
+                return item.url === url;
+            });
+            let i = lib.indexOf(target);
+            (!target) ? this.syncData(start): this.libData(i);
         },
         /**
          * cleaning the page from previous results
