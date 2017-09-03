@@ -23,8 +23,7 @@ const Modal = Backbone.View.extend(
          * along with the current one into the DOM
          * @returns {Object} - html from modal.html
          */
-        render: function() {
-          console.log(this.params);
+        render: function() {          
           $.get('src/components/modal/modal.html').done(tpl => {
               this.$el.append(_.template(tpl)(this.params));
           });

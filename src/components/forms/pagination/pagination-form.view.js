@@ -17,6 +17,7 @@ const PaginationForm = Backbone.View.extend(
          */
 
         events: {
+
             'click [data-id = "prev"]': 'showPrev',
             'click [data-id = "more"]': 'showMore',
             'click [data-id = "next"]': 'showNext'
@@ -26,36 +27,40 @@ const PaginationForm = Backbone.View.extend(
          * @constructs
          * @extends Backbone.View
          */
-        initialize: function() {
-            this.counter = STEP;
+        initialize: function(params) {
+            this.params = params;
+            this.params.page = Number(this.params.page);
         },
         /**
          * This will append the html from file pagination-form.html
          * along with the current one into the DOM
          * @returns {Object} - html from pagination-form.html
          */
-        render: function() {
+        render: function() {            
             $.get('src/components/forms/pagination/pagination-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
             return this;
         },
+
         /**
          * Method that showing the 10 previous books
          * @fires SearchPage#showPrev
          */
         showPrev: function(e) {
             if (e.target.classList.contains('disabled')) return;
-            this.counter -= STEP;
+            this.params.page--;
+            Backbone.history.navigate(`search/${this.params.query}/${this.params.page}`);
             this.disabledBtn();
             this.removePanels();
-            this.checkData(this.counter - STEP, this.counter);
+            this.checkData((this.params.page * STEP) - STEP, this.params.page * STEP);
         },
         /**
          * Method that adds 10 following books
          * @fires SearchPage#showMore
          */
         showMore: function() {
-            this.checkData(this.counter, this.counter + STEP);
-            this.counter += STEP;
+            Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
+            this.checkData(this.params.page * STEP, (this.params.page * STEP) + STEP);
+            this.params.page++;
 
         },
         /**
@@ -65,8 +70,9 @@ const PaginationForm = Backbone.View.extend(
         showNext: function() {
             this.enableBtn();
             this.removePanels();
-            this.checkData(this.counter, this.counter + STEP);
-            this.counter += STEP;
+            Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
+            this.checkData(this.params.page * STEP, (this.params.page * STEP) + STEP);
+            this.params.page++;
         },
         /**
          * Method that fills a library collection
@@ -83,8 +89,7 @@ const PaginationForm = Backbone.View.extend(
                 $('.pagination').before(new List(lib).render().el);
                 Collections.library.add(Collections.books.models);
             });
-            let query = Collections.books.query;
-            Collections.books.url = fullUrl(query, this.counter, STEP);
+            Collections.books.url = fullUrl(this.params.query, this.params.page * STEP, STEP);
             Collections.books.fetch();
         },
         /**
@@ -107,7 +112,7 @@ const PaginationForm = Backbone.View.extend(
          * on which to complete the selection
          */
         checkData: function(start, stop) {
-            (this.counter == Collections.library.length) ? this.syncData(): this.libData(start, stop);
+            (this.params.page * STEP == Collections.library.length) ? this.syncData(): this.libData(start, stop);
         },
         /**
          * The method that makes the previous button enable
@@ -119,7 +124,7 @@ const PaginationForm = Backbone.View.extend(
          * The method that makes the previous button disable
          */
         disabledBtn: function() {
-            if (this.counter == STEP) $('[data-id = "prev"]').attr('class', 'btn btn-default disabled');
+            if (this.params.page == 1) $('[data-id = "prev"]').attr('class', 'btn btn-default disabled');
         },
         /**
          * cleaning the page from previous results

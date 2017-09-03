@@ -20,8 +20,8 @@ const SearchForm = Backbone.View.extend(
          * along with the current one into the DOM
          * @returns {Object} - html from search-form.html
          */
-        render: function() {          
-            $.get('src/components/forms/search/search-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
+        render: function() {
+            $.get('src/components/forms/search/search-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));            
             return this;
         }
     });
