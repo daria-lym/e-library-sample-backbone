@@ -54,19 +54,11 @@ const SearchPage = Backbone.View.extend(
          * @member {Number} page - get number of the page from url or 1 when new search works
          * @method fullUrl - forms the path of the request
          */
-        showBooks: function(query, page) {
-            Collections.books.once('sync', () => {
-                Collections.library.on('update', function(e) {
-                    Collections.library.models.slice(-STEP).forEach((model) => model.set('url', Collections.books.url));
-                });
-                let lib = Collections.books.toJSON();
-                this.$el.append(new List(lib).render().el);
-                this.$el.append(new PaginationForm({
-                    query,
-                    page
-                }).render().el);
-                Collections.library.add(Collections.books.models);
-            });
+        showBooks: function(query, page) {            
+            this.$el.append(new PaginationForm({
+                query,
+                page
+            }).render().el);
             Collections.books.url = fullUrl(query, (page - 1) * STEP, STEP);
             Collections.books.fetch();
         },

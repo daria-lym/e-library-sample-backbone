@@ -69,9 +69,18 @@ const MainRouter = Backbone.Router.extend(
         }
     });
 /**
- * Method that creates a new Router and start history
+ * Method that creates a new Router, start history
+ * and listens to collections for changes
  */
 $(() => {
     const app = new MainRouter();
     Backbone.history.start();
+    Collections.books.on('sync', () => {
+        let lib = Collections.books.toJSON();
+        $('.pagination').before(new List(lib).render().el);
+        Collections.library.add(Collections.books.models);
+    });
+    Collections.library.on('update', function(e) {
+        Collections.library.models.slice(-STEP).forEach((model) => model.set('url', Collections.books.url));
+    });
 });

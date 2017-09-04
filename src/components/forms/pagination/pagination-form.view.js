@@ -29,7 +29,7 @@ const PaginationForm = Backbone.View.extend(
          */
         initialize: function(params) {
             this.params = params;
-            this.params.page = Number(this.params.page);            
+            this.params.page = Number(this.params.page);
         },
         /**
          * This will append the html from file pagination-form.html
@@ -78,12 +78,7 @@ const PaginationForm = Backbone.View.extend(
          * @member {Number} start - start index of the book to search query
          *
          */
-        syncData: function(start) {
-            Collections.books.once('sync', () => {
-                let lib = Collections.books.toJSON();
-                $('.pagination').before(new List(lib).render().el);
-                Collections.library.add(Collections.books.models);
-            });
+        syncData: function(start) {            
             Collections.books.url = fullUrl(this.params.query, start, STEP);
             Collections.books.fetch();
         },
