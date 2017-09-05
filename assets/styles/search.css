@@ -12,17 +12,20 @@
 .search-confirm {
     height: 50px;
     width: 80px;
+    background-image: linear-gradient(to bottom, #e89724 0, #462805 100%);
 }
 
 p.text-justify {
     height: 150px;
     overflow: auto;
+    color: #462805;
 }
 
 h4.text-center {
     margin-top: 10px;
     max-height: 20px;
     overflow: hidden;
+    color: #462805;
 }
 
 .center-block {
@@ -33,11 +36,6 @@ h4.text-center {
 .row-items {
     text-align: center;
     background: inherit;
-}
-
-.col-lg-4::before {
-    content: '';
-    filter: blur(10px);
 }
 
 .col-lg-4 {
@@ -54,6 +52,12 @@ h4.text-center {
 .pagination {
     width: 100%;
     text-align: center;
+}
+
+.btn-default {
+    color: #fff;
+    background-image: linear-gradient(to bottom, #715e3b 0, #402c09 100%);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
 }
 
 .openModal {

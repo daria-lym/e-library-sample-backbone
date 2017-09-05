@@ -4,15 +4,6 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-
-a.navbar-brand {
-    color: rgba(12, 10, 10, 0.8);
-}
-
-.navbar {
-    background-image: linear-gradient(to bottom, rgba(138, 109, 59, 0.95) 0, #560d0d 100%);
-}
-
 h3 {
     color: rgba(255, 255, 255, 0.8);
     padding-bottom: 20px;
@@ -70,7 +61,7 @@ input#searchBtn {
     border-radius: 8px;
     padding-bottom: 0;
     height: 60px;
-    background: #df2359;
+    background: #462805;
     color: white;
     text-align: center;
     transition: all 600ms ease-in-out;

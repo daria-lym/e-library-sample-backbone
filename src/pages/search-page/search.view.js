@@ -45,8 +45,12 @@ const SearchPage = Backbone.View.extend(
         newSearch: function() {
             $('.row, .pagination').remove();
             let query = $('.search-input').val();
-            Backbone.history.navigate(`search/${query}/${1}`);
-            this.showBooks(query, 1);
+            if (query) {
+                Backbone.history.navigate(`search/${query}/${1}`);
+                this.showBooks(query, 1);
+            } else {
+                Backbone.history.navigate(`search`);
+            }
         },
         /**
          * Method that start of filling a collection
