@@ -25,6 +25,7 @@ const List = Backbone.View.extend(
          * @returns {Object} - html from list.html && list-item.view.js
          */
         render: function() {
+            let query = $('.search-input').val();            
             this.params.forEach((book) => {
                 this.$el.append(new ListItem(book).render().el);
             }, this);

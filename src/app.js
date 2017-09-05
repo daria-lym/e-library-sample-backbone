@@ -1,10 +1,29 @@
 /**
+ * @member {Object} books - declaration the new instance of collection Books
+ * which contains the last 10 books from the query
  * @member {Object} library - declaration the new instance of collection
+ * which contains all books from the query
  */
 Collections = {
-    books: new Books()
+    books: new Books(),
+    library: new Library()
 };
-
+/**
+ * @member {Number} STEP - number of books in 1 query
+ */
+const STEP = 10;
+/**
+ * @method fullUrl - query path method
+ * @param {String} query - query name
+ * @param {Number} start - the number of the
+ * book with which to start the search
+ * @param {Number} STEP - number of books in the query
+ * @returns {String} url - full query path
+ */
+const fullUrl = (query, start, STEP) => {
+    let url = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${start}&maxResults=${STEP}`;
+    return (url);
+};
 /**Creating an application Router*/
 
 const MainRouter = Backbone.Router.extend(
@@ -37,6 +56,11 @@ const MainRouter = Backbone.Router.extend(
          * @param {Number} page - number of the page
          */
         search: (str, page) => {
+            /*if (page > 1 && Collections.library.length == 0) {
+                Backbone.history.navigate(`search`);
+                str = null;
+                page = null;
+            };*/
             const searchPage = new SearchPage({
                 str,
                 page
@@ -44,11 +68,19 @@ const MainRouter = Backbone.Router.extend(
             $('div.container').html(searchPage.render().el);
         }
     });
-
 /**
- * Method that creates a new Router and start history
+ * Method that creates a new Router, start history
+ * and listens to collections for changes
  */
 $(() => {
     const app = new MainRouter();
     Backbone.history.start();
+    Collections.books.on('sync', () => {
+        let lib = Collections.books.toJSON();
+        $('.pagination').before(new List(lib).render().el);
+        Collections.library.add(Collections.books.models);
+    });
+    Collections.library.on('update', function(e) {
+        Collections.library.models.slice(-STEP).forEach((model) => model.set('url', Collections.books.url));
+    });
 });

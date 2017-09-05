@@ -7,6 +7,5 @@ const Books = Backbone.Collection.extend(
          * @method parse - receives a request specified in the url
          */
         model: Book,
-        url: 'https://www.googleapis.com/books/v1/volumes?q=javascript&startIndex=0&maxResults=10',
         parse: response => response.items
     });
