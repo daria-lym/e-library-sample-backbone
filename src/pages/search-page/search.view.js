@@ -43,9 +43,9 @@ const SearchPage = Backbone.View.extend(
          *
          */
         newSearch: function() {
+            $('.row, .pagination').remove();
             let query = $('.search-input').val();
             Backbone.history.navigate(`search/${query}/${1}`);
-            $('.panel-group, .pagination').remove();
             this.showBooks(query, 1);
         },
         /**
@@ -54,7 +54,7 @@ const SearchPage = Backbone.View.extend(
          * @member {Number} page - get number of the page from url or 1 when new search works
          * @method fullUrl - forms the path of the request
          */
-        showBooks: function(query, page) {            
+        showBooks: function(query, page) {
             this.$el.append(new PaginationForm({
                 query,
                 page
@@ -68,7 +68,7 @@ const SearchPage = Backbone.View.extend(
          * @member {Object} target - determines which
          * collection object matches the event
          */
-        showModal: function(e) {            
+        showModal: function(e) {
             let target = Collections.library.toJSON().find((item) => {
                 return item.id === e.target.getAttribute('data-id');
             });

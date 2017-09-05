@@ -5,6 +5,14 @@ body {
     background-size: cover;
 }
 
+a.navbar-brand {
+    color: rgba(12, 10, 10, 0.8);
+}
+
+.navbar {
+    background-image: linear-gradient(to bottom, rgba(138, 109, 59, 0.95) 0, #560d0d 100%);
+}
+
 h3 {
     color: rgba(255, 255, 255, 0.8);
     padding-bottom: 20px;

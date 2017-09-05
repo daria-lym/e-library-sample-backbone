@@ -42,7 +42,7 @@ const PaginationForm = Backbone.View.extend(
         },
 
         /**
-         * Method that showing the 10 previous books
+         * Method that showing the 12 previous books
          * @fires SearchPage#showPrev
          */
         showPrev: function(e) {
@@ -53,7 +53,7 @@ const PaginationForm = Backbone.View.extend(
             this.checkData((this.params.page * STEP) - STEP);
         },
         /**
-         * Method that adds 10 following books
+         * Method that adds 12 following books
          * @fires SearchPage#showMore
          */
         showMore: function() {
@@ -63,7 +63,7 @@ const PaginationForm = Backbone.View.extend(
 
         },
         /**
-         * Method that showing the 10 following books
+         * Method that showing the 12 following books
          * @fires SearchPage#showNext
          */
         showNext: function() {
@@ -78,7 +78,7 @@ const PaginationForm = Backbone.View.extend(
          * @member {Number} start - start index of the book to search query
          *
          */
-        syncData: function(start) {            
+        syncData: function(start) {
             Collections.books.url = fullUrl(this.params.query, start, STEP);
             Collections.books.fetch();
         },
@@ -115,6 +115,6 @@ const PaginationForm = Backbone.View.extend(
          * cleaning the page from previous results
          */
         removePanels: function() {
-            if ($('.panel-group')) $('.panel-group').remove()
+            if ($('.row')) $('.row').remove()
         }
     });

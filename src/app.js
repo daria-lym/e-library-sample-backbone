@@ -1,6 +1,6 @@
 /**
  * @member {Object} books - declaration the new instance of collection Books
- * which contains the last 10 books from the query
+ * which contains the last 12 books from the query
  * @member {Object} library - declaration the new instance of collection
  * which contains all books from the query
  */
@@ -11,7 +11,7 @@ Collections = {
 /**
  * @member {Number} STEP - number of books in 1 query
  */
-const STEP = 10;
+const STEP = 12;
 /**
  * @method fullUrl - query path method
  * @param {String} query - query name

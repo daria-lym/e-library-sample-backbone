@@ -8,7 +8,7 @@ const List = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'panel-group',
+        className: 'row row-items',
         /**
          * Creates a new NavBar instance
          * @constructs
@@ -25,7 +25,7 @@ const List = Backbone.View.extend(
          * @returns {Object} - html from list.html && list-item.view.js
          */
         render: function() {
-            let query = $('.search-input').val();            
+            let query = $('.search-input').val();
             this.params.forEach((book) => {
                 this.$el.append(new ListItem(book).render().el);
             }, this);
