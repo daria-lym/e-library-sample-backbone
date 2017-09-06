@@ -1,4 +1,4 @@
-const PaginationForm = Backbone.View.extend(
+const Pagination = Backbone.View.extend(
     /** @lends PaginationForm.prototype */
     {
         /**
@@ -11,16 +11,11 @@ const PaginationForm = Backbone.View.extend(
         className: 'pagination',
         /**
          * Search event.
-         * @event SearchPage#showPrev
          * @event SearchPage#showMore
-         * @event SearchPage#showNext
          */
 
         events: {
-
-            'click [data-id = "prev"]': 'showPrev',
-            'click [data-id = "more"]': 'showMore',
-            'click [data-id = "next"]': 'showNext'
+            'click [data-id = "more"]': 'showMore'
         },
         /**
          * Creates a new PaginationForm instance
@@ -37,48 +32,27 @@ const PaginationForm = Backbone.View.extend(
          * @returns {Object} - html from pagination-form.html
          */
         render: function() {
-            $.get('src/components/forms/pagination/pagination-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
+            $.get('src/components/pagination/pagination.html').done(tpl => this.$el.html(_.template(tpl)(this)));
             return this;
         },
 
-        /**
-         * Method that showing the 10 previous books
-         * @fires SearchPage#showPrev
-         */
-        showPrev: function(e) {
-            if (this.params.page === 1) return;
-            this.params.page--;
-            Backbone.history.navigate(`search/${this.params.query}/${this.params.page}`);
-            this.removePanels();
-            this.checkData((this.params.page * STEP) - STEP);
-        },
+
         /**
          * Method that adds 10 following books
          * @fires SearchPage#showMore
          */
         showMore: function() {
-            Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
+            Backbone.history.navigate(`search/${this.params.query}/${++this.params.page}`);
             this.checkData(this.params.page * STEP);
-            this.params.page++;
+        },
 
-        },
-        /**
-         * Method that showing the 10 following books
-         * @fires SearchPage#showNext
-         */
-        showNext: function() {
-            this.removePanels();
-            Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
-            this.checkData(this.params.page * STEP);
-            this.params.page++;
-        },
         /**
          * Method that fills a library collection
          * with books that are not yet there
          * @member {Number} start - start index of the book to search query
          *
          */
-        syncData: function(start) {            
+        syncData: function(start) {
             Collections.books.url = fullUrl(this.params.query, start, STEP);
             Collections.books.fetch();
         },
