@@ -1,0 +1,32 @@
+.search-input {
+    height: 50px;
+    font-size: 18px;
+    width: 40%;
+    padding-bottom: 7px;
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-confirm {
+    height: 50px;
+    width: 80px;
+}
+
+.col-md-8 {
+    height: 250px;
+    overflow: auto;
+}
+
+.col-md-2 {
+    text-align: center;
+}
+
+.openModal {
+    margin-top: 90px;
+}
+
+.panel-group {
+    padding: 20px;
+}
