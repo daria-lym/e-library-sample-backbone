@@ -35,13 +35,12 @@ const Pagination = Backbone.View.extend(
             $.get('src/components/pagination/pagination.html').done(tpl => this.$el.html(_.template(tpl)(this)));
             return this;
         },
-
-
         /**
          * Method that adds 10 following books
          * @fires SearchPage#showMore
          */
         showMore: function() {
+            Collections.library.off('update');
             Backbone.history.navigate(`search/${this.params.query}/${++this.params.page}`);
             this.checkData(this.params.page * STEP);
         },

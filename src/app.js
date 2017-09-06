@@ -55,7 +55,8 @@ const MainRouter = Backbone.Router.extend(
          * @param {String} str - query value
          * @param {Number} page - number of the page
          */
-        search: (str, page) => {          
+        search: (str, page) => {
+            Collections.books.off('sync');
             const searchPage = new SearchPage({
                 str,
                 page
@@ -64,18 +65,9 @@ const MainRouter = Backbone.Router.extend(
         }
     });
 /**
- * Method that creates a new Router, start history
- * and listens to collections for changes
+ * Method that creates a new Router and start history
  */
 $(() => {
     const app = new MainRouter();
     Backbone.history.start();
-    Collections.books.on('sync', () => {
-        let lib = Collections.books.toJSON();
-        $('.pagination').before(new List(lib).render().el);
-        Collections.library.add(Collections.books.models);
-    });
-    Collections.library.on('update', function(e) {
-        Collections.library.models.slice(-STEP).forEach((model) => model.set('url', Collections.books.url));
-    });
 });

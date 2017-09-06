@@ -25,6 +25,12 @@ const SearchPage = Backbone.View.extend(
          */
         initialize: function(params) {
             this.params = params;
+            Collections.books.on('sync', () => {
+                console.log(1);
+                let lib = Collections.books.toJSON();
+                $('.pagination').before(new List(lib).render().el);
+                Collections.library.add(Collections.books.models);
+            });
         },
         /**
          * This will append the html from file search.html
@@ -44,8 +50,8 @@ const SearchPage = Backbone.View.extend(
          */
         newSearch: function() {
             let query = $('.search-input').val();
-            Backbone.history.navigate(`search/${query}/${1}`);
             $('.panel-group, .pagination').remove();
+            Backbone.history.navigate(`search/${query}/${1}`);
             this.showBooks(query, 1);
         },
         /**

@@ -21,11 +21,11 @@ const Book = Backbone.Model.extend(
          * @returns {Object} - one instance of the model
          */
         parse: (book) => {
-            
+
             return {
                 title: book.volumeInfo.title,
-                author: (book.volumeInfo.authors) ? book.volumeInfo.authors.join(', ') : false,
-                category: (book.volumeInfo.categories) ? book.volumeInfo.categories.join(', ') : false,
+                author: (book.volumeInfo.authors) ? book.volumeInfo.authors.join(', ') : 'Your name could be here.',
+                category: (book.volumeInfo.categories) ? book.volumeInfo.categories.join(', ') : 'Not like everyone else.',
                 publisher: book.volumeInfo.publisher,
                 date: book.volumeInfo.publishedDate,
                 description: book.volumeInfo.description,

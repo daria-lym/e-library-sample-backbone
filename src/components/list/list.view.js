@@ -17,6 +17,10 @@ const List = Backbone.View.extend(
          */
         initialize: function(params) {
             this.params = params;
+            Collections.library.on('update', function(e) {
+                console.log(2);
+                Collections.library.models.slice(-STEP).forEach((model) => model.set('url', Collections.books.url));
+            });
         },
         /**
          * This will append the html from file list.html && list-item.view.js
@@ -25,7 +29,7 @@ const List = Backbone.View.extend(
          * @returns {Object} - html from list.html && list-item.view.js
          */
         render: function() {
-            let query = $('.search-input').val();            
+            let query = $('.search-input').val();
             this.params.forEach((book) => {
                 this.$el.append(new ListItem(book).render().el);
             }, this);

@@ -1,5 +1,5 @@
 const ListItem = Backbone.View.extend(
-    /** @lends NavBar.prototype */
+    /** @lends ListItem.prototype */
     {
         /**
          * This will append the tagName and className
@@ -10,7 +10,7 @@ const ListItem = Backbone.View.extend(
         tagName: 'div',
         className: 'panel panel-primary',
         /**
-         * Creates a new NavBar instance
+         * Creates a new ListItem instance
          * @constructs
          * @extends Backbone.View
          * @member {Object} params - one book from response in JSON
