@@ -5,29 +5,41 @@ Search form styles
      text-align: center;
  }
 .search-input {
-    align: center;
     height: 50px;
     font-size: 18px;
     width: 80%;
     max-width: 700px;
 }
-.search-confirm {
-    align: center;
+.search-lg {
     height: 50px;
     color: white;
     background-color: #9c650e;
     border-radius: 0px;
+}
+.search-sd {
+    height: 50px;
+    color: white;
+    background-color: #9c650e;
+    border-radius: 0px;
+    display: none;
+    width: 100%;
 }
 .search-input-sd {
     text-align: center;
     width: 100%;
     display: none;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
     .search-input-lg {
         display: none;
     }
     .search-input-sd {
+        display: block;
+    }
+    .search-lg {
+        display: none;
+    }
+    .search-sd {
         display: block;
     }
 }

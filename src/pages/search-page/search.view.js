@@ -42,9 +42,10 @@ const SearchPage = Backbone.View.extend(
          * @member {String} query - get value of input paceholder
          *
          */
-        newSearch: function() {
-            $('.row, .pagination').remove();
-            let query = $('.search-input').val();
+        newSearch: function(e) {
+            $('.row-items, .pagination').remove();
+            let query;
+            ($(e.target).hasClass('search-lg')) ? query = $('.search-input-lg').val() : query=$('.search-input-sd').val();            
             if (query) {
                 Backbone.history.navigate(`search/${query}/${1}`);
                 this.showBooks(query, 1);
