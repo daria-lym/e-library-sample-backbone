@@ -60,7 +60,7 @@ const SearchPage = Backbone.View.extend(
          * @method fullUrl - forms the path of the request
          */
         showBooks: function(query, page) {
-            this.$el.append(new PaginationForm({
+            this.$el.append(new Pagination({
                 query,
                 page
             }).render().el);

@@ -10,6 +10,14 @@ const NavBar = Backbone.View.extend(
         tagName: 'div',
         className: 'container-fluid',
         /**
+         * Event of scrolling.
+         * @event NavBare#top
+         */
+        events: {
+            'click .on-top': 'top',
+
+        },
+        /**
          * Creates a new NavBar instance
          * @constructs
          * @extends Backbone.View
@@ -26,5 +34,15 @@ const NavBar = Backbone.View.extend(
         render: function() {
             $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
             return this;
+        },
+        /**
+         * Method that scroll page to the top
+         * @fires NavBare#top
+         */
+        top: () => {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 'slow');
+            return false;
         }
     });
