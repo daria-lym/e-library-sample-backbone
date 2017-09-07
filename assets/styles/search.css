@@ -1,56 +1,79 @@
+/*
+Search form styles
+ */
+ .search-form {
+     text-align: center;
+ }
 .search-input {
+    align: center;
     height: 50px;
     font-size: 18px;
-    width: 40%;
-    padding-bottom: 3px;
+    width: 80%;
+    max-width: 700px;
 }
-
-.search-form {
-    text-align: center;
-}
-
 .search-confirm {
+    align: center;
     height: 50px;
-    width: 80px;
     color: white;
     background-color: #9c650e;
     border-radius: 0px;
 }
-
+.search-input-sd {
+    text-align: center;
+    width: 100%;
+    display: none;
+}
+@media screen and (max-width: 400px) {
+    .search-input-lg {
+        display: none;
+    }
+    .search-input-sd {
+        display: block;
+    }
+}
+/*
+Items content styles
+ */
+ .row-items {
+     background: inherit;
+     margin-top: 10px;
+     display: inline-block;
+ }
+ .col-lg-3 {
+     background: inherit;
+     text-align: center;
+     max-width: 270px;
+     height: 400px;
+     background: inherit;
+     box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.4);
+     margin: 5px;
+     padding: 0px;
+ }
 p.text-justify {
     height: 150px;
     overflow: auto;
     color: #462805;
 }
-
 h4.text-center {
     margin-top: 10px;
     max-height: 20px;
     overflow: hidden;
     color: #462805;
 }
-
 .center-block {
     margin-top: 10px;
     height: 140px;
 }
-
-.row-items {
-    text-align: center;
-    background: inherit;
+.openModal {
+    color: #fff;
+    background-color: #715e3b;
+    border-color: #715e3b;
+    border-radius: 0px;
 }
 
-.col-lg-4 {
-    background: inherit;
-    margin: 20px;
-    text-align: center;
-    max-width: 300px;
-    height: 400px;
-    background: inherit;
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.4);
-    margin-left: 40px;
-}
-
+/*
+Pagination form styles
+ */
 .pagination {
     width: 100%;
     text-align: center;
@@ -62,11 +85,4 @@ h4.text-center {
     border-color: white;
     border-radius: 0px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
-}
-
-.openModal {
-    color: #fff;
-    background-color: #715e3b;
-    border-color: #715e3b;
-    border-radius: 0px;
 }

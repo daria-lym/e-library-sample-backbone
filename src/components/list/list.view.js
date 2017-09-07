@@ -8,7 +8,7 @@ const List = Backbone.View.extend(
          * @member {String} className - the class attribute of the element
          */
         tagName: 'div',
-        className: 'row container-fluid row-items',
+        className: 'row-items',
         /**
          * Creates a new NavBar instance
          * @constructs
