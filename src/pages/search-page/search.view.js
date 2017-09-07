@@ -45,7 +45,7 @@ const SearchPage = Backbone.View.extend(
         newSearch: function(e) {
             $('.row-items, .pagination').remove();
             let query;
-            ($(e.target).hasClass('search-lg')) ? query = $('.search-input-lg').val() : query=$('.search-input-sd').val();            
+            ($(e.target).hasClass('search-lg')) ? query = $('.search-input-lg').val(): query = $('.search-input-sd').val();
             if (query) {
                 Backbone.history.navigate(`search/${query}/${1}`);
                 this.showBooks(query, 1);

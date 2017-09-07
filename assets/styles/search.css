@@ -1,21 +1,25 @@
 /*
 Search form styles
  */
- .search-form {
-     text-align: center;
- }
+
+.search-form {
+    text-align: center;
+}
+
 .search-input {
     height: 50px;
     font-size: 18px;
     width: 80%;
     max-width: 700px;
 }
+
 .search-lg {
     height: 50px;
     color: white;
     background-color: #9c650e;
     border-radius: 0px;
 }
+
 .search-sd {
     height: 50px;
     color: white;
@@ -24,11 +28,13 @@ Search form styles
     display: none;
     width: 100%;
 }
+
 .search-input-sd {
     text-align: center;
     width: 100%;
     display: none;
 }
+
 @media screen and (max-width: 420px) {
     .search-input-lg {
         display: none;
@@ -43,39 +49,49 @@ Search form styles
         display: block;
     }
 }
+
+
 /*
 Items content styles
  */
- .row-items {
-     background: inherit;
-     margin-top: 10px;
-     display: inline-block;
- }
- .col-lg-3 {
-     background: inherit;
-     text-align: center;
-     max-width: 270px;
-     height: 400px;
-     background: inherit;
-     box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.4);
-     margin: 5px;
-     padding: 0px;
- }
+
+.row-items {
+    background: inherit;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.col-lg-3 {
+    background: inherit;
+    text-align: center;
+    max-width: 270px;
+    background: inherit;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.6);
+    margin: 5px;
+    padding: 0px;
+}
+
 p.text-justify {
-    height: 150px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 399px;
     overflow: auto;
     color: #462805;
 }
+
 h4.text-center {
+    font-family: 'Times New Roman', Times, serif;
+    max-height: 80px;
     margin-top: 10px;
-    max-height: 20px;
     overflow: hidden;
     color: #462805;
 }
-.center-block {
+
+.img-rounded {
+    float: left;
     margin-top: 10px;
-    height: 140px;
+    height: 100px;
 }
+
 .openModal {
     color: #fff;
     background-color: #715e3b;
@@ -83,9 +99,32 @@ h4.text-center {
     border-radius: 0px;
 }
 
+.panel {
+    background: inherit;
+    margin: 10px;
+}
+
+.panel-footer {
+    background: inherit;
+}
+
+.btn-collapse {
+    background: inherit;
+    margin-top: 10px;
+    padding: 0px;
+    height: 50px;
+    width: 100%;
+    border: 0px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14pt;
+    color: #462805;
+}
+
+
 /*
 Pagination form styles
  */
+
 .pagination {
     width: 100%;
     text-align: center;
@@ -97,4 +136,21 @@ Pagination form styles
     border-color: white;
     border-radius: 0px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+}
+
+
+/*
+Modal window styles
+ */
+
+.btn-close {
+    color: #fff;
+    background-color: #715e3b;
+    border-color: #715e3b;
+    border-radius: 0px;
+}
+
+.modal-content {
+    background-color: #fffc;
+    border-radius: 0px;
 }

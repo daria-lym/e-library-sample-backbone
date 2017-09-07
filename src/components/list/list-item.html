@@ -1,10 +1,15 @@
-<div class='book-content'>
-    <img src="<%=img%>" class="img-rounded center-block"></img>
-    <h4 class="text-center">
-        <%=title%>
-    </h4>
-    <p class="text-justify">
-        <%=description%>
-    </p>
-    <button class="btn openModal" data-id=<%=id%>>View details »</button>
+<div class="book-content panel">
+    <div class="panel-body">
+        <img src="<%=img%>" class="img-rounded"></img>
+        <h4 class="text-center">
+            <%=title%>
+        </h4>
+        <button class="btn-collapse" data-toggle="collapse" data-target="#collapse-<%=id%>">Show description »</button>
+    </div>
+    <div class="collapse panel-footer" id="collapse-<%=id%>" >
+        <p class="text-justify">
+            <%=description%>
+        </p>
+        <button class="btn openModal" data-id=<%=id%>>View details »</button>
+    </div>
 </div>
