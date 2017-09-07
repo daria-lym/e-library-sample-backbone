@@ -11,7 +11,7 @@ const Pagination = Backbone.View.extend(
         className: 'pagination',
         /**
          * Search event.
-         * @event SearchPage#showMore         
+         * @event SearchPage#showMore
          */
 
         events: {
@@ -40,10 +40,8 @@ const Pagination = Backbone.View.extend(
          * @fires SearchPage#showMore
          */
         showMore: function() {
-            Backbone.history.navigate(`search/${this.params.query}/${this.params.page + 1}`);
+            Backbone.history.navigate(`search/${this.params.query}/${++this.params.page}`);
             this.checkData(this.params.page * STEP);
-            this.params.page++;
-
         },
         /**
          * Method that fills a library collection
