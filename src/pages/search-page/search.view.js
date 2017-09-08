@@ -68,7 +68,6 @@ const SearchPage = Backbone.View.extend({
     showModal: function (e) {
         const modalEl = $('#modal');
         const book = this.books.get(e.target.getAttribute('data-id'))
-
         modalEl.html(new Modal(book).render().el);
         modalEl.modal();
     }
