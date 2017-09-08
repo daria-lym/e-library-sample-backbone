@@ -1,32 +1,24 @@
-const ListItem = Backbone.View.extend(
-    /** @lends ListItem.prototype */
-    {
-        /**
-         * This will append the tagName and className
-         * along with the current one into the DOM
-         * @member {String} tagName - the tag of the element
-         * @member {String} className - the class attribute of the element
-         */
+const ListItem = Backbone.View.extend({
         tagName: 'div',
         className: 'panel panel-primary',
         /**
          * Creates a new ListItem instance
+         *
          * @constructs
-         * @extends Backbone.View
-         * @member {Object} params - one book from response in JSON
+         * @param {Object} book - one book from response in JSON
          */
-        initialize: function(params) {
-            this.params = params;
+        initialize: function(book) {
+            this.book = book.toJSON();
         },
         /**
+         *
          * This will append the html from file list-item.html
          * along with the current one into the DOM
+         *
          * @returns {Object} - html from list-item.html
          */
         render: function() {
-            $.get('src/components/list/list-item.html').done(tpl => {
-                this.$el.append(_.template(tpl)(this.params));
-            });
+            $.get('src/components/list/list-item.html').done(tpl => this.$el.append(_.template(tpl)(this.book)));
             return this;
         }
     });

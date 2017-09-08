@@ -23,8 +23,7 @@ const HomePage = Backbone.View.extend(
          * @extends Backbone.View
          * @param {{}} params - Backbone.View options
          */
-        initialize: function(params) {
-            this.params = params;
+        initialize: function() {
         },
         /**
          * This will append the html from file home.html
@@ -32,7 +31,7 @@ const HomePage = Backbone.View.extend(
          * @returns {Object} - html from home.html
          */
         render: function() {
-            $.get('src/pages/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/pages/home-page/home.html').done(tpl => this.$el.html(_.template(tpl)()));
             return this;
         },
         /**
