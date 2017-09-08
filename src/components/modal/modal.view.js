@@ -15,18 +15,20 @@ const Modal = Backbone.View.extend(
          * @extends Backbone.View
          * @param {{}} params - Backbone.View options
          */
-        initialize: function(params) {
-            this.params = params;
+
+        initialize: function (book) {
+            this.book = book;
         },
         /**
          * This will append the html from file modal.html
          * along with the current one into the DOM
          * @returns {Object} - html from modal.html
          */
-        render: function() {          
-          $.get('src/components/modal/modal.html').done(tpl => {
-              this.$el.append(_.template(tpl)(this.params));
-          });
-          return this;
+
+        render: function () {
+            $.get('src/components/modal/modal.html').done(tpl => {
+                this.$el.append(_.template(tpl)({book: this.book}));
+            });
+            return this;
         }
     });

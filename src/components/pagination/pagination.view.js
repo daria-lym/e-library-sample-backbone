@@ -15,7 +15,7 @@ const Pagination = Backbone.View.extend(
          */
 
         events: {
-            'click [data-id = "more"]': 'showMore',
+            'click [data-id = "more"]': 'showMore'
         },
         /**
          * Creates a new PaginationForm instance
@@ -36,13 +36,16 @@ const Pagination = Backbone.View.extend(
             return this;
         },
         /**
+
          * Method that adds 12 following books
          * @fires SearchPage#showMore
          */
         showMore: function() {
+            Collections.library.off('update');
             Backbone.history.navigate(`search/${this.params.query}/${++this.params.page}`);
             this.checkData(this.params.page * STEP);
         },
+
         /**
          * Method that fills a library collection
          * with books that are not yet there
