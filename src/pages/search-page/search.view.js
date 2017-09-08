@@ -1,51 +1,74 @@
-const SearchPage = Backbone.View.extend(
-    /** @lends SearchPage.prototype */
-    {
-        /**
-         * This will append the tagName and className
-         * along with the current one into the DOM
-         * @member {String} tagName - the tag of the element
-         * @member {String} className - the class attribute of the element
-         */
-        tagName: 'div',
-        className: 'search-page',
-        /**
-         * showBooks event.
-         * @event SearchPage#showBooks
-         */
-        events: {
-            'click .search-confirm': 'showBooks'
-        },
-        /**
-         * Creates a new SearchPage instance
-         * @constructs
-         * @extends Backbone.View
-         * @param {{}} params - Backbone.View options
-         */
-        initialize: function(params) {
-            this.params = params;
-        },
-        /**
-         * This will append the html from file search.html
-         * along with the current one into the DOM
-         * @returns {Object} - html from search.html && search components
-         */
-        render: function() {
-            this.$el.append(new SearchForm().render().el);
-            return this;
-        },
-        /**
-         * Method that start of filling a collection
-         * @fires SearchPage#showBooks
-         * @member {Object} books - instance of the collection
-         * @member {Object} lib - collection in JSON format
-         * which are filling from response
-         */
-        showBooks: function() {
-            Collections.books.on('sync', () => {
-                let lib = Collections.books.toJSON();
-                this.$el.append(new List(lib).render().el)
-            });
-            Collections.books.fetch();
-        }
-    });
+const SearchPage = Backbone.View.extend({
+    tagName: 'div',
+    className: 'search-page',
+    events: {
+        'click .search-confirm': 'search',
+        'click .openModal': 'showModal',
+        'click .load-more': 'loadMore'
+    },
+    /**
+     * Creates a new SearchPage instance
+     *
+     * @constructs
+     * @param {Object.<string, number>} params
+     * @param {String} [params.text] - searched text
+     * @param {Number} [params.page] - searched page
+     */
+    initialize: function (params) {
+        this.page = 1;
+        this.params = params;
+        this.books = new Books();
+        this.books.on('sync', collection => {
+            this.renderList(collection.models)
+        });
+    },
+    /**
+     * This will append the html from file search.html
+     * along with the current one into the DOM
+     *
+     * @returns {Object} - html from search.html && search components
+     */
+    render: function () {
+        this.$el.append(new SearchForm(this.params).render().el);
+
+        return this;
+    },
+    /**
+     * Method triggered by a new search
+     *
+     */
+    search: function () {
+        this.page = 1;
+        this.fetch(true);
+    },
+
+    loadMore: function () {
+        ++this.page;
+        this.fetch();
+    },
+
+    fetch: function(remove) {
+        const text = $('.search-input').val();
+        this.books.fetch({page: this.page, text, remove});
+    },
+    /**
+     * Method that start of filling a collection
+     * @param {String} text - text that will be searched
+     * @param {Number} page - page will be displayed
+     */
+    renderList: function (books) {
+        this.$el.find('.content').append(new List(books).render().el);
+    },
+    /**
+     * Method that show modal window
+     *
+     * @param {Object} e - get value of current event
+     *
+     */
+    showModal: function (e) {
+        const modalEl = $('#modal');
+        const book = this.books.get(e.target.getAttribute('data-id'))
+        modalEl.html(new Modal(book).render().el);
+        modalEl.modal();
+    }
+});

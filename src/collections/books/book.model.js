@@ -2,7 +2,7 @@ const Book = Backbone.Model.extend(
     /** @lends Book.prototype */
     {
         /**
-         * @param {Object} defaults - indicates the primary key of the model         
+         * @param {Object} defaults - indicates the primary key of the model
          */
         defaults: {
             title: 'Top secret (apparently).',
@@ -11,8 +11,9 @@ const Book = Backbone.Model.extend(
             publisher: 'Did not pay for advertising.',
             date: 'It was a long time ago in a galaxy far far away...',
             description: 'If you read this we will have to kill you. Enjoy!',
-            img: 'i/Cover.gif',
-            id: '0'
+            img: 'assets/img/Cover.gif',
+            id: '0',
+            url: ''
         },
         /**
          * @member {Object} book - one object requested from the server
@@ -20,14 +21,16 @@ const Book = Backbone.Model.extend(
          * @returns {Object} - one instance of the model
          */
         parse: (book) => {
+
             return {
                 title: book.volumeInfo.title,
-                author: (book.volumeInfo.authors) ? book.volumeInfo.authors.join(', ') : false,
-                category: (book.volumeInfo.categories) ? book.volumeInfo.categories.join(', ') : false,
+                author: (book.volumeInfo.authors) ? book.volumeInfo.authors.join(', ') : 'Your name could be here.',
+                category: (book.volumeInfo.categories) ? book.volumeInfo.categories.join(', ') : 'Not like everyone else.',
                 publisher: book.volumeInfo.publisher,
                 date: book.volumeInfo.publishedDate,
                 description: book.volumeInfo.description,
-                img: book.volumeInfo.imageLinks.thumbnail,
+                img: (!book.volumeInfo.imageLinks || !book.volumeInfo.imageLinks.thumbnail) ?
+                    'assets/img/Cover.gif' : book.volumeInfo.imageLinks.thumbnail,
                 id: book.id
             };
         }
