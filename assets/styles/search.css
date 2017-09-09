@@ -128,6 +128,7 @@ Pagination form styles
 .pagination {
     width: 100%;
     text-align: center;
+    display: none;
 }
 
 .load-more {
@@ -158,9 +159,4 @@ Modal window styles
 .panel-primary {
     background: inherit;
     box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.4);
-}
-
-.pagination {
-    width: 100%;
-    text-align: center;
 }

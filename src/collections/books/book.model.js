@@ -1,9 +1,6 @@
-const Book = Backbone.Model.extend(
-    /** @lends Book.prototype */
-    {
-        /**
-         * @param {Object} defaults - indicates the primary key of the model
-         */
+/** Create a model of the one book of collection*/
+const Book = Backbone.Model.extend({
+        
         defaults: {
             title: 'Top secret (apparently).',
             author: 'Your name could be here.',
@@ -16,9 +13,9 @@ const Book = Backbone.Model.extend(
             url: ''
         },
         /**
-         * @member {Object} book - one object requested from the server
-         * @method parse - processes the request and picks up the necessary data from book
+         * @param {Object} book - one object requested from the server
          * @returns {Object} - one instance of the model
+         *
          */
         parse: (book) => {
             return {

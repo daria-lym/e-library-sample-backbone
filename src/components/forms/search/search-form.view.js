@@ -1,27 +1,21 @@
-const SearchForm = Backbone.View.extend(
-    /** @lends NavBar.prototype */
-    {
-        /**
-         * This will append the tagName and className
-         * along with the current one into the DOM
-         * @member {String} tagName - the tag of the element
-         * @member {String} className - the class attribute of the element
-         */
+/** Create a search form on the search page*/
+const SearchForm = Backbone.View.extend({
         tagName: 'div',
-        className: 'search-form',
+        className: 'search-form form-group',
         /**
-         * Creates a new NavBar instance
-         * @constructs 
-         * @extends Backbone.View        
+         * Creates a new SearchForm instance
+         *
          */
         initialize: function() {},
         /**
          * This will append the html from file search-form.html
          * along with the current one into the DOM
+         *
          * @returns {Object} - html from search-form.html
+         *
          */
         render: function() {
-            $.get('src/components/forms/search/search-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));            
+            $.get('src/components/forms/search/search-form.html').done(tpl => this.$el.html(_.template(tpl)(this)));
             return this;
         }
     });

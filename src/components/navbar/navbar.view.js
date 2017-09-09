@@ -1,43 +1,29 @@
-const NavBar = Backbone.View.extend(
-    /** @lends NavBar.prototype */
-    {
-        /**
-         * This will append the tagName and className
-         * along with the current one into the DOM
-         * @member {String} tagName - the tag of the element
-         * @member {String} className - the class attribute of the element
-         */
+/** Create the NavBar content of all pages*/
+const NavBar = Backbone.View.extend({
         tagName: 'div',
         className: 'container-fluid',
-        /**
-         * Event of scrolling.
-         * @event NavBare#top
-         */
         events: {
-            'click .on-top': 'top',
-
+            'click .on-top': 'top'
         },
         /**
          * Creates a new NavBar instance
-         * @constructs
-         * @extends Backbone.View
-         * @param {{}} params - Backbone.View options
+         *
          */
-        initialize: function(params) {
-            this.params = params;
-        },
+        initialize: function() {},
         /**
          * This will append the html from file navbar.html
          * along with the current one into the DOM
+         *
          * @returns {Object} - html from navbar.html
+         *
          */
         render: function() {
-            $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)(this.params)));
+            $.get('src/components/navbar/navbar.html').done(tpl => this.$el.html(_.template(tpl)));
             return this;
         },
         /**
          * Method that scroll page to the top
-         * @fires NavBare#top
+         *
          */
         top: () => {
             $('html, body').animate({
