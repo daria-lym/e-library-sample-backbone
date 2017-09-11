@@ -1,7 +1,7 @@
 /** Create a search form on the search page*/
 const SearchForm = Backbone.View.extend({
         tagName: 'div',
-        className: 'search-form form-group',
+        className: 'search-form input-group',
         /**
          * Creates a new SearchForm instance
          *

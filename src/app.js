@@ -22,7 +22,7 @@ const MainRouter = Backbone.Router.extend({
      *
      * @param {String} text - query value
      * @param {Number} page - number of the page
-     * 
+     *
      */
     search: (text, page) => $('div.container').html(new SearchPage({
         text,

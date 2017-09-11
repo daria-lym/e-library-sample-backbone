@@ -1,6 +1,6 @@
 /** Create a model of the one book of collection*/
 const Book = Backbone.Model.extend({
-        
+
         defaults: {
             title: 'Top secret (apparently).',
             author: 'Your name could be here.',
@@ -8,7 +8,7 @@ const Book = Backbone.Model.extend({
             publisher: 'Did not pay for advertising.',
             date: 'It was a long time ago in a galaxy far far away...',
             description: 'If you read this we will have to kill you. Enjoy!',
-            img: 'assets/img/Cover.gif',
+            img: 'assets/img/cover.gif',
             id: '0',
             url: ''
         },
@@ -26,7 +26,7 @@ const Book = Backbone.Model.extend({
                 date: book.volumeInfo.publishedDate,
                 description: book.volumeInfo.description,
                 img: (!book.volumeInfo.imageLinks || !book.volumeInfo.imageLinks.thumbnail) ?
-                    'assets/img/Cover.gif' : book.volumeInfo.imageLinks.thumbnail,
+                    'assets/img/cover.gif' : book.volumeInfo.imageLinks.thumbnail,
                 id: book.id
             };
         }
