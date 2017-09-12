@@ -1,7 +1,7 @@
 /** Create one item of the content to filling the search page*/
 const ListItem = Backbone.View.extend({
         tagName: 'div',
-        className: 'col-xs-12 col-sd-6 col-md-4 col-lg-3',
+        className: 'col-xs-6 col-sd-6 col-md-4 col-lg-3',
 
         /**
          * Creates a new ListItem instance

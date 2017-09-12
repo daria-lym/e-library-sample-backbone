@@ -10,13 +10,7 @@ const NavBar = Backbone.View.extend({
      *
      */
     initialize: function() {
-        $((f) => {
-            let el = f('#on-top');
-            f(window).scroll(function() {
-                el['fade' + (f(this).scrollTop() > 200 ? 'In' : 'Out')](500);
-            });
-        });
-        document.querySelector('#on-top').addEventListener('click', () => this.top());
+        this.scrollInit();
     },
     /**
      * This will append the html from file navbar.html
@@ -33,10 +27,25 @@ const NavBar = Backbone.View.extend({
      * Method that scroll page to the top
      *
      */
-    top: () => {        
+    top: () => {
         $('html, body').animate({
             scrollTop: 0
         }, 'slow');
         return false;
+    },
+
+    /**
+     * Method that show and hide scroll button
+     * and add listener to button click
+     *
+     */
+    scrollInit: function() {
+        $((f) => {
+            let el = f('#on-top');
+            f(window).scroll(function() {
+                el['fade' + (f(this).scrollTop() > 200 ? 'In' : 'Out')](500);
+            });
+        });
+        document.querySelector('#on-top').addEventListener('click', () => this.top());
     }
 });

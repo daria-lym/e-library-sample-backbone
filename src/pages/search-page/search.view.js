@@ -48,7 +48,7 @@ const SearchPage = Backbone.View.extend({
      */
     search: function(e) {
         $('.pagination').css('display', 'block');
-        $('.row-items').remove();
+        $('.row-items').remove();        
         this.page = 1;
         this.text = ($(e.target).hasClass('search-lg')) ?
             $('.search-input-lg').val() : $('.search-input-sd').val();

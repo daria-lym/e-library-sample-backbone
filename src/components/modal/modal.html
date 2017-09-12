@@ -1,18 +1,22 @@
 <div class="modal-content">
     <div class="modal-header">
         <button class="close" data-dismiss="modal">x</button>
-        <h4 class="text-center text-primary">
+        <h4 class="text-center modal-primary">
             <%=book.get("title")%>
         </h4>
     </div>
     <div class="modal-body">
         <div id="bodyModal" class="coll">
-            Author:
-            <%=book.get("author")%>;<br> Title:
-                <%=book.get("title")%>;<br> Category:
-                    <%=book.get("category")%>;<br> Publisher:
-                        <%=book.get("publisher")%>;<br> Date:
-                            <%=book.get("date")%>;
+            <p>Author:
+                <%=book.get("author")%>;</p>
+            <p>Title:
+                <%=book.get("title")%>;</p>
+            <p>Category:
+                <%=book.get("category")%>;</p>
+            <p> Publisher:
+                <%=book.get("publisher")%>;</p>
+            <p> Date:
+                <%=book.get("date")%>;</p>
         </div>
     </div>
     <div class="modal-footer">
