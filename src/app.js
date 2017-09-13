@@ -2,6 +2,7 @@
 const MainRouter = Backbone.Router.extend({
     routes: {
         'search(/:text)(/:page)': 'search',
+        'favorite(/:text)(/:page)': 'favorite',
         '*path': 'default'
     },
 
@@ -25,6 +26,11 @@ const MainRouter = Backbone.Router.extend({
      *
      */
     search: (text, page) => $('div.container').html(new SearchPage({
+        text,
+        page
+    }).render().el),
+
+    favorite: (text, page) => $('div.container').html(new FavoritePage({
         text,
         page
     }).render().el)

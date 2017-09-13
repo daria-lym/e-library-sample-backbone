@@ -1,0 +1,13 @@
+.icon-heart.selected {
+    border: 2px inset #ff6656;
+}
+
+.favorite-logo {
+    text-align: center;
+    width: 100%;
+}
+.icon-heart-logo{
+  height: 150px;
+  min-width: 30%;
+
+}
