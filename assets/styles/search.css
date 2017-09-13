@@ -1,42 +1,237 @@
-.search-input {
-    height: 50px;
-    font-size: 18px;
-    width: 40%;
-    padding-bottom: 3px;
-}
+/*
+Search form styles
+ */
 
 .search-form {
+    text-align: right;
+    width: 100%;
+}
+
+.search-input {
+    height: 40px;
+    font-size: 18px;
+    width: 60%;
+    max-width: 500px;
+}
+
+.search-lg {
+    height: 40px;
+    color: white;
+    background-color: #9c650e;
+    border-radius: 0px;
+}
+
+.search-sd {
+    height: 40px;
+    color: white;
+    background-color: #9c650e;
+    border-radius: 0px;
+    display: none;
+    width: 100%;
+}
+
+.search-input-sd {
     text-align: center;
+    width: 100%;
+    display: none;
 }
 
-.search-confirm {
-    height: 50px;
-    width: 80px;
+@media screen and (max-width: 420px) {
+    .search-input-lg {
+        display: none;
+    }
+    .search-input-sd {
+        display: block;
+    }
+    .search-lg {
+        display: none;
+    }
+    .search-sd {
+        display: block;
+    }
 }
 
-.col-md-8 {
-    height: 250px;
+.page-content {
+    width: 100%;
+}
+
+
+/*
+Items content styles
+ */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-items {
+    background: inherit;
+    margin-top: 10px;
+    margin-left: 3%;
+    width: 1180px;
+}
+
+.col-lg-3 {
+    background: inherit;
+    text-align: left;
+    max-width: 270px;
+    background: inherit;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.6);
+    margin: 5px;
+    padding: 0px;
+}
+
+p.text-justify {
+    height: 215px;
     overflow: auto;
 }
 
-.col-md-2 {
-    text-align: center;
+h4.text-center {
+    max-height: 80px;
+    margin-top: 10px;
+    padding-left: 1%;
+    overflow: hidden;
+    color: #462805;
+}
+
+.img-rounded {
+    float: left;
+    margin-top: 10px;
+    height: 100px;
+}
+
+.icon-heart {
+    float: right;
+    height: 20px;
+    margin-top: -10px;
+    margin-right: -10px;
 }
 
 .openModal {
-    margin-top: 90px;
+    color: #fff;
+    background-color: #715e3b;
+    border-color: #715e3b;
+    border-radius: 0px;
+    margin-top: 10px;
+    margin-left: 8%;
 }
 
-.panel-group {
-    padding: 20px;
-}
-
-.panel-primary {
+.panel {
     background: inherit;
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.4);
+    margin: 10px;
 }
+
+.panel-footer {
+    background: inherit;
+}
+
+.btn-collapse {
+    background: inherit;
+    margin-left: 8%;
+    height: 30px;
+    border: 0px;
+    font-size: 14pt;
+    color: #462805;
+}
+
+@media screen and (max-width: 1250px) {
+    .row-items {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .col-xs-6 {
+        max-width: 122px;
+        height: 160px;
+    }
+    .icon-heart {
+        height: 10px;
+        margin-top: 8px;
+    }
+    .btn-collapse {
+        height: 20px;
+        font-size: 11pt;
+        margin-left: 4px;
+    }
+    .img-rounded {
+        height: 60px;
+    }
+    .panel {
+        margin: 0;
+    }
+    .panel-body {
+        padding: 0;
+    }
+    h4.text-center {
+        font-size: 14px;
+        max-height: 45px;
+        padding-left: 0;
+    }
+    .openModal {
+        margin-top: 10px;
+        margin-left: 5px;
+        width: 90%;
+        font-size: 10pt;
+    }
+    .page-content {
+        padding: 0px 5px;
+    }
+}
+
+
+/*
+Pagination form styles
+ */
 
 .pagination {
     width: 100%;
     text-align: center;
+    display: none;
+}
+
+.load-more {
+    color: #fff;
+    background-color: #715e3b;
+    border-color: white;
+    border-radius: 0px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+    margin-bottom: 20px;
+}
+
+
+/*
+Modal window styles
+ */
+
+.btn-close {
+    color: #fff;
+    background-color: #715e3b;
+    border-color: #715e3b;
+    border-radius: 0px;
+}
+
+.modal-content {
+    background: inherit;
+    border-radius: 0px;
+    background-image: url('../../assets/img/bg-modal.png');
+    background-size: contain;
+}
+
+.modal-header {
+    margin: 5px;
+    border-bottom: 0px;
+}
+
+.modal-footer {
+    margin: 5px;
+    border-top: 0px;
+}
+
+.modal-dialog {
+    margin: 60px auto;
 }

@@ -3,44 +3,56 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    padding-top: 55px;
 }
 
 h3 {
-    color: rgba(255, 255, 255, 0.8);
+    color: #462805;
     padding-bottom: 20px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 p {
     color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin: 0;
+    color: #462805;
+}
+
+form p {
     padding-bottom: 50px;
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Bookman Old Style', serif;
 }
 
 .home {
-    width: 350px;
-    height: 400px;
+    width: 280px;
+    height: 350px;
     background: inherit;
     position: absolute;
     overflow: hidden;
     top: 50%;
     left: 50%;
-    margin-left: -175px;
+    margin-left: -140px;
     margin-top: -200px;
     border-radius: 8px;
 }
 
 .home:before {
-    width: 400px;
-    height: 450px;
+    width: 330px;
+    height: 400px;
     content: "";
     position: absolute;
     top: -25px;
-    left: -25px;
     bottom: 0;
     right: 0;
     background: inherit;
@@ -62,7 +74,7 @@ input#searchBtn {
     border-radius: 8px;
     padding-bottom: 0;
     height: 60px;
-    background: #df2359;
+    background: #462805;
     color: white;
     text-align: center;
     transition: all 600ms ease-in-out;

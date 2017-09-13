@@ -1,18 +1,18 @@
-<div class="panel-heading">
-    <h1 class="text-center">
-        <%=title%>
-    </h1>
-</div>
-<div class="panel-body">
-    <div class="col-md-2">
-        <img src="<%=img%>" width="100%" class="img-responsive"></img>
+<div class="book-content panel">
+    <div class="panel-body">
+        <div class="container-fluid">
+            <img src="assets/img/heart.png" class="icon-heart"></img>
+            <img src="<%=img%>" class="img-rounded"></img>
+            <h4 class="text-center">
+                <%=title%>
+            </h4>
+        </div>
+        <button class="btn openModal" data-id=<%=id%>>View details »</button>
+        <button class="btn-collapse" data-toggle="collapse" data-target="#collapse-<%=id%>">Show description »</button>
     </div>
-    <div class="col-md-8">
-        <h4 class="text-justify">
+    <div class="collapse panel-footer" id="collapse-<%=id%>">
+        <p class="text-justify description">
             <%=description%>
-        </h4>
-    </div>
-    <div class="col-md-2">
-        <button class="btn btn-info openModal" data-id=<%=id%>>Show<br>summary</button>
+        </p>
     </div>
 </div>
