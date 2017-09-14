@@ -1,5 +1,5 @@
 /** Brings together all items of the content to filling the search page*/
-const List = Backbone.View.extend({
+const FavoriteList = Backbone.View.extend({
     tagName: 'div',
     className: 'row-items',
     /**
@@ -10,9 +10,8 @@ const List = Backbone.View.extend({
      * @param {String} url - path to response current collection
      *
      */
-    initialize: function(books, url) {
-        this.books = new Books(books);
-        this.url = url;        
+    initialize: function(books) {
+        this.books = books;
     },
     /**
      * This will append the html from file list.html && list-item.view.js
@@ -22,7 +21,7 @@ const List = Backbone.View.extend({
      *
      */
     render: function() {
-        this.books.map(book => this.$el.append(new ListItem(book).render().el));
+        this.books.map(book => this.$el.append(new ListItem(book).render().el));        
         return this;
     }
 });

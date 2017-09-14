@@ -6,8 +6,12 @@
     text-align: center;
     width: 100%;
 }
-.icon-heart-logo{
-  height: 150px;
-  min-width: 30%;
 
+.icon-heart-logo {
+    height: 150px;
+    min-width: 30%;
+}
+
+h1 {
+    color: #7d097a;
 }
