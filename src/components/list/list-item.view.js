@@ -28,7 +28,14 @@ const ListItem = Backbone.View.extend({
         return this;
     },
     addFavorite: function(e) {
-        ($(e.target).hasClass('selected')) ? $(e.target).removeClass('selected'): $(e.target).addClass('selected');
-        console.log(this);
+        if ($(e.target).hasClass('selected')) {
+            $(e.target).removeClass('selected');
+            delete localStorage[this.id];
+
+        } else {
+            $(e.target).addClass('selected');
+            localStorage[this.id] = JSON.stringify(this.attributes);
+
+        }
     }
 });

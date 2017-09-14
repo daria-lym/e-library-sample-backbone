@@ -11,7 +11,7 @@ const NavBar = Backbone.View.extend({
      *
      */
     initialize: function() {
-        this.scrollInit();
+        this.scrollInit();        
     },
     /**
      * This will append the html from file navbar.html
@@ -49,14 +49,6 @@ const NavBar = Backbone.View.extend({
         });
         document.querySelector('#on-top').addEventListener('click', () => this.top());
     },
-    showFavorite: function() {
-        Backbone.history.navigate('favorite', true);
-        $('li.favorite').css('display', 'none');
-        $('li.back-to-search').css('display', 'block');
-    },
-    showSearch: function() {
-        Backbone.history.navigate('search', true);
-        $('li.favorite').css('display', 'block');
-        $('li.back-to-search').css('display', 'none');
-    }
+    showFavorite: () => Backbone.history.navigate('favorite', true),
+    showSearch: () => Backbone.history.navigate('search', true)
 });

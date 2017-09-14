@@ -30,6 +30,6 @@ const HomePage = Backbone.View.extend({
          */
         searchUrl: function() {
             Backbone.history.navigate('search', true);
-            $('li.favorite').css('display', 'block');
+            //$('li.favorite').css('display', 'block');
         }
     });

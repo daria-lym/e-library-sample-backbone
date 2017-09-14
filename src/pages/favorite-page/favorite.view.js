@@ -6,7 +6,13 @@ const FavoritePage = Backbone.View.extend({
      * Creates a new FavoritePage instance
      *
      */
-    initialize: function() {},
+    initialize: function() {
+        this.books = new Favorits();
+        for(let key in localStorage){
+          console.log(typeof(localStorage.key));
+        };
+        //console.log(this.books);
+    },
 
     /**
      * This will append the html from file favorite.html

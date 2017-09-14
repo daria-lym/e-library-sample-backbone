@@ -49,6 +49,15 @@ Search form styles
     .search-sd {
         display: block;
     }
+    .nav-tabs>li>a{
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .navbar-brand{
+      height: 30px;
+    }
 }
 
 .page-content {
@@ -85,7 +94,7 @@ Items content styles
 }
 
 p.text-justify {
-    height: 215px;
+    height: 222px;
     overflow: auto;
 }
 
@@ -147,7 +156,6 @@ h4.text-center {
 @media screen and (max-width: 450px) {
     .col-xs-6 {
         max-width: 122px;
-        height: 160px;
     }
     .icon-heart {
         height: 10px;
@@ -166,6 +174,7 @@ h4.text-center {
     }
     .panel-body {
         padding: 0;
+        height: 160px;
     }
     h4.text-center {
         font-size: 14px;
@@ -180,6 +189,10 @@ h4.text-center {
     }
     .page-content {
         padding: 0px 5px;
+    }
+    p.text-justify {
+        height: 322px;
+        font-size: 10pt;
     }
 }
 

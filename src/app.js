@@ -25,15 +25,24 @@ const MainRouter = Backbone.Router.extend({
      * @param {Number} page - number of the page
      *
      */
-    search: (text, page) => $('div.container').html(new SearchPage({
-        text,
-        page
-    }).render().el),
+    search: function(text, page) {
+        this.showHideTabs('li.favorite', 'li.back-to-search');
+        $('div.container').html(new SearchPage({
+            text,
+            page
+        }).render().el);
 
-    favorite: (text, page) => $('div.container').html(new FavoritePage({
-        text,
-        page
-    }).render().el)
+    },
+
+    favorite: function(text, page) {
+        $('div.container').html(new FavoritePage().render().el);
+        this.showHideTabs('li.back-to-search', 'li.favorite');
+    },
+
+    showHideTabs: (show, hide) => {
+        $(show).css('display', 'block');
+        $(hide).css('display', 'none');
+    }
 });
 
 /**
