@@ -3,14 +3,15 @@ const NavBar = Backbone.View.extend({
     tagName: 'div',
     className: 'container-fluid',
     events: {
-        'click #on-top': 'top'
+        'click .favorite': 'showFavorite',
+        'click .back-to-search': 'showSearch'
     },
     /**
      * Creates a new NavBar instance
      *
      */
     initialize: function() {
-        this.scrollInit();
+        this.scrollInit();        
     },
     /**
      * This will append the html from file navbar.html
@@ -47,5 +48,7 @@ const NavBar = Backbone.View.extend({
             });
         });
         document.querySelector('#on-top').addEventListener('click', () => this.top());
-    }
+    },
+    showFavorite: () => Backbone.history.navigate('favorite', true),
+    showSearch: () => Backbone.history.navigate('search', true)
 });

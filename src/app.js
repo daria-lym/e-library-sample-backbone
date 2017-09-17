@@ -2,6 +2,7 @@
 const MainRouter = Backbone.Router.extend({
     routes: {
         'search(/:text)(/:page)': 'search',
+        'favorite(/:text)(/:page)': 'favorite',
         '*path': 'default'
     },
 
@@ -24,10 +25,36 @@ const MainRouter = Backbone.Router.extend({
      * @param {Number} page - number of the page
      *
      */
-    search: (text, page) => $('div.container').html(new SearchPage({
-        text,
-        page
-    }).render().el)
+    search: function(text, page) {
+        this.showHideTabs('li.favorite', 'li.back-to-search');
+        $('div.container').html(new SearchPage({
+            text,
+            page
+        }).render().el);
+
+    },
+    /**
+     * Method that creates a favorite page and render it
+     *
+     * @param {String} text - query value
+     * @param {Number} page - number of the page
+     *
+     */
+    favorite: function(text, page) {
+        $('div.container').html(new FavoritePage().render().el);
+        this.showHideTabs('li.back-to-search', 'li.favorite');
+    },
+    /**
+     * Method that show or hide tabs of routes to the favorite and search pages
+     *
+     * @param {String} show - selector of element, that must be shown
+     * @param {String} hide - selector of element, that must be hidden
+     *
+     */
+    showHideTabs: (show, hide) => {
+        $(show).css('display', 'block');
+        $(hide).css('display', 'none');
+    }
 });
 
 /**

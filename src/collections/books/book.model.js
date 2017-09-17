@@ -9,8 +9,7 @@ const Book = Backbone.Model.extend({
             date: 'It was a long time ago in a galaxy far far away...',
             description: 'If you read this we will have to kill you. Enjoy!',
             img: 'assets/img/cover.gif',
-            id: '0',
-            url: ''
+            id: '0'            
         },
         /**
          * @param {Object} book - one object requested from the server

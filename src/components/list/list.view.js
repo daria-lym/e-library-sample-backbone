@@ -3,7 +3,7 @@ const List = Backbone.View.extend({
     tagName: 'div',
     className: 'row-items',
     /**
-     * Creates a new NavBar instance
+     * Creates a new List instance
      *
      * @constructs
      * @param {Object[]} books - local collection of books
