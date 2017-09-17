@@ -24,14 +24,17 @@ const ListItem = Backbone.View.extend({
      *
      */
     render: function() {
-        $.get('src/components/list/list-item.html').done(tpl => this.$el.append(_.template(tpl)(this.book)));        
+        if (localStorage[this.$el.attr('id')]) {
+            $.get('src/components/list/list-item-selected.html').done(tpl => this.$el.append(_.template(tpl)(this.book)));
+        } else {
+            $.get('src/components/list/list-item.html').done(tpl => this.$el.append(_.template(tpl)(this.book)));
+        }             
         return this;
     },
     addFavorite: function(e) {
         if ($(e.target).hasClass('selected')) {
             $(e.target).removeClass('selected');
             delete localStorage[this.id];
-
         } else {
             $(e.target).addClass('selected');
             localStorage[this.id] = JSON.stringify(this.attributes);

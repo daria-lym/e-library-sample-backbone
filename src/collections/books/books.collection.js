@@ -10,8 +10,7 @@ const Books = Backbone.Collection.extend({
 
         if (params.url === undefined) {
             params.url = `${this.url}?q=${text}&startIndex=${(page-1) * STEP}&maxResults=${STEP}`;
-        }
-
+        }        
         return Backbone.Collection.prototype.fetch.call(this, params);
     },
 });

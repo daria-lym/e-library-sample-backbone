@@ -13,5 +13,21 @@
 }
 
 h1 {
-    color: #7d097a;
+    color: #e42222;
+}
+
+.load-more-favorite {
+    background-color: #e42222;
+    border-color: white;
+    border-radius: 0px;
+    color: white;
+    margin-bottom: 20px;
+}
+.openModalF{
+  color: #fff;
+  background-color:  #e42222;
+  border-color:  #e42222;
+  border-radius: 0px;
+  margin-top: 10px;
+  margin-left: 8%;
 }

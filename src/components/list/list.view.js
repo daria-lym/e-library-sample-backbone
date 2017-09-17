@@ -12,7 +12,7 @@ const List = Backbone.View.extend({
      */
     initialize: function(books, url) {
         this.books = new Books(books);
-        this.url = url;        
+        this.url = url;
     },
     /**
      * This will append the html from file list.html && list-item.view.js
@@ -22,7 +22,7 @@ const List = Backbone.View.extend({
      *
      */
     render: function() {
-        this.books.map(book => this.$el.append(new ListItem(book).render().el));
+        this.books.map(book => this.$el.append(new ListItem(book).render().el));        
         return this;
     }
 });

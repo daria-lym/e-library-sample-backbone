@@ -48,7 +48,7 @@ const SearchPage = Backbone.View.extend({
      */
     search: function(e) {
         $('.pagination').css('display', 'block');
-        $('.row-items').remove();        
+        $('.row-items').remove();
         this.page = 1;
         this.text = ($(e.target).hasClass('search-lg')) ?
             $('.search-input-lg').val() : $('.search-input-sd').val();
@@ -86,7 +86,7 @@ const SearchPage = Backbone.View.extend({
      *
      */
     renderList: function(books, url) {
-        this.$el.find('.content').append(new List(books.slice(-12), url).render().el);
+        this.$el.find('.content').append(new List(books.slice(-12), url).render().el);        
     },
     /**
      * Method that show modal window

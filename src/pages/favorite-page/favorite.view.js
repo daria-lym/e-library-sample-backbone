@@ -4,7 +4,8 @@ const FavoritePage = Backbone.View.extend({
     className: 'favorite page',
     events: {
         'click .icon-heart-logo': 'renderList',
-        'click .openModal': 'showModal'
+        'click .openModalF': 'showModal',
+        'click .load-more-favorite': 'showMore'
     },
     /**
      * Creates a new FavoritePage instance
@@ -12,10 +13,8 @@ const FavoritePage = Backbone.View.extend({
      */
     initialize: function() {
         this.books = new Favorits();
-        for (let key in localStorage) {
-            let book = JSON.parse(localStorage[key]);
-            this.books.push(book);
-        };
+        this.books.fetch();
+        this.step = 0;
     },
 
     /**
@@ -36,9 +35,10 @@ const FavoritePage = Backbone.View.extend({
      *
      */
     renderList: function() {
-        if (this.books.length > 0) {
-            this.$el.find('.content').html(new FavoriteList(this.books).render().el);
+        if (this.books.length > 0 && this.step + 12 <= this.books.length) {
+            this.$el.find('.content').html(new FavoriteList(this.books.slice(this.step, this.step + 12)).render().el);
         }
+        $('.pagination').css('display', 'block');
     },
     /**
      * Method that show modal window
@@ -51,5 +51,13 @@ const FavoritePage = Backbone.View.extend({
         const book = this.books.get(e.target.getAttribute('data-id'))
         modalEl.html(new Modal(book).render().el);
         modalEl.modal();
+    },
+    showMore: function() {
+        this.step += 12;
+        if (this.books.length > 0 && this.step + 12 <= this.books.length) {
+            this.$el.find('.content').append(new FavoriteList(this.books.slice(this.step, this.step + 12)).render().el);
+        } else if (this.books.length > 0 && this.step + 12 > this.books.length) {
+            this.$el.find('.content').append(new FavoriteList(this.books.slice(this.step, this.books.length)).render().el);
+        }
     }
 });

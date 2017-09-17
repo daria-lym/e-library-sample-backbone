@@ -21,7 +21,7 @@ const FavoriteList = Backbone.View.extend({
      *
      */
     render: function() {
-        this.books.map(book => this.$el.append(new ListItem(book).render().el));        
+        this.books.map(book => this.$el.append(new FavoriteListItem(book).render().el));
         return this;
     }
 });
