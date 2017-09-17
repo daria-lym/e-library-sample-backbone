@@ -33,12 +33,24 @@ const MainRouter = Backbone.Router.extend({
         }).render().el);
 
     },
-
+    /**
+     * Method that creates a favorite page and render it
+     *
+     * @param {String} text - query value
+     * @param {Number} page - number of the page
+     *
+     */
     favorite: function(text, page) {
         $('div.container').html(new FavoritePage().render().el);
         this.showHideTabs('li.back-to-search', 'li.favorite');
     },
-
+    /**
+     * Method that show or hide tabs of routes to the favorite and search pages
+     *
+     * @param {String} show - selector of element, that must be shown
+     * @param {String} hide - selector of element, that must be hidden
+     *
+     */
     showHideTabs: (show, hide) => {
         $(show).css('display', 'block');
         $(hide).css('display', 'none');

@@ -1,4 +1,4 @@
-/** Create one item of the content to filling the search page*/
+/** Create one item of the content to filling the favorite page*/
 const FavoriteListItem = Backbone.View.extend({
     tagName: 'div',
     className: 'col-xs-6 col-sd-6 col-md-4 col-lg-3',
@@ -14,10 +14,10 @@ const FavoriteListItem = Backbone.View.extend({
         this.book = book.toJSON();
     },
     /**
-     * This will append the html from file list-item.html
+     * This will append the html from file favorite-list-item.html
      * along with the current one into the DOM
      *
-     * @returns {Object} - html from list-item.html
+     * @returns {Object} - html from favorite-list-item.html
      *
      */
     render: function() {

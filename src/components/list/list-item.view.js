@@ -28,9 +28,15 @@ const ListItem = Backbone.View.extend({
             $.get('src/components/list/list-item-selected.html').done(tpl => this.$el.append(_.template(tpl)(this.book)));
         } else {
             $.get('src/components/list/list-item.html').done(tpl => this.$el.append(_.template(tpl)(this.book)));
-        }             
+        }
         return this;
     },
+    /**
+     * Method that filling or clear localStorage
+     *
+     * @param {Object} e - current click event
+     *
+     */
     addFavorite: function(e) {
         if ($(e.target).hasClass('selected')) {
             $(e.target).removeClass('selected');

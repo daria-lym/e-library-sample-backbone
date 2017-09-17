@@ -14,14 +14,13 @@ const FavoritePage = Backbone.View.extend({
     initialize: function() {
         this.books = new Favorits();
         this.books.fetch();
-        this.step = 0;
     },
 
     /**
      * This will append the html from file favorite.html
      * along with the current one into the DOM
      *
-     * @returns {Object} - html from favorite.html
+     * @returns {Object} - html from favorite.html && favorite components
      *
      */
     render: function() {
@@ -31,10 +30,11 @@ const FavoritePage = Backbone.View.extend({
     /**
      * Method that start of filling a collection
      *
-     * @param {Object}  books - collection of all responsed books
+     * @param {Object}  this.books - collection of all favorite books
      *
      */
     renderList: function() {
+        this.step = 0;
         if (this.books.length > 0 && this.step + 12 <= this.books.length) {
             this.$el.find('.content').html(new FavoriteList(this.books.slice(this.step, this.step + 12)).render().el);
         }
@@ -52,11 +52,18 @@ const FavoritePage = Backbone.View.extend({
         modalEl.html(new Modal(book).render().el);
         modalEl.modal();
     },
+    /**
+     * Method that continue of filling a collection
+     *
+     * @param {Object} this.books - collection of all favorite books
+     * @param {Number} this.step - counter of items per page
+     *
+     */
     showMore: function() {
         this.step += 12;
-        if (this.books.length > 0 && this.step + 12 <= this.books.length) {
+        if (this.books.length > this.step && this.step + 12 <= this.books.length) {
             this.$el.find('.content').append(new FavoriteList(this.books.slice(this.step, this.step + 12)).render().el);
-        } else if (this.books.length > 0 && this.step + 12 > this.books.length) {
+        } else if (this.books.length > this.step && this.step + 12 > this.books.length) {
             this.$el.find('.content').append(new FavoriteList(this.books.slice(this.step, this.books.length)).render().el);
         }
     }
